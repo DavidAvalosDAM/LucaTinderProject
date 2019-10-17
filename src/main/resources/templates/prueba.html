@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Agregando una Persona</title>
+
+    </head>
+    <body>
+
+      <h1 class="hola_amigo" th:text="'Hola, acabas de agregar una persona llamada: '+${persona.nombre}"></h1>
+	  <form action="/tabla">
+	  		<button type=submit>Ver Tabla</button>
+	  </form>     
+      
+
+    </body>
+</html>

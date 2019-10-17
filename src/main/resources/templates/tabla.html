@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Lista de personas</title>
+
+    </head>
+    <body>
+
+       <table>
+       	  <th:block th:each="per : ${personas}">
+       		<tr>
+       			
+       			<td th:text="${per.idPersona}">...</td>
+       			<td th:text="${per.nombre}">...</td>
+       			      	       		
+       		</tr>
+       	   </th:block>
+       </table>
+
+		<form action="/">
+	  		<button type=submit>Agregar</button>
+	    </form>    
+    </body>
+</html>
