@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.lucatinder.dao.IPersonaRepo;
-import com.lucatinder.model.Persona;
+import com.lucatinder.model.Usuario;
 
 @Controller
 public class PruebaControlador {
@@ -18,7 +18,7 @@ public class PruebaControlador {
 	public String base(Model model) {
 		
 		//ya... ya se que no es un bean, pero por favor déjame vivir que estoy CONTENTO!!!
-		Persona p=new Persona();
+		Usuario p=new Usuario();
 		p.setNombre("Rosssio");
 		repo.save(p);
 		
