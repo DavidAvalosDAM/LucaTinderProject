@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.lucatinder.dao.IPersonaRepo;
+import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Persona;
 
 @Controller
