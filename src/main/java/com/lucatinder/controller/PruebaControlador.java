@@ -10,7 +10,7 @@ import com.lucatinder.model.Persona;
 
 @Controller
 public class PruebaControlador {
-/*
+
 	@Autowired
 	private IPersonaRepo repo;
 	
@@ -34,5 +34,5 @@ public class PruebaControlador {
 		model.addAttribute("personas",repo.findAll());
 		
 		return "tabla";
-	}*/
+	}
 }
