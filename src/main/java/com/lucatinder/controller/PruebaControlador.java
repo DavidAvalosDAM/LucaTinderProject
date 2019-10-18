@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.lucatinder.dao.IPersonaRepo;
+import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
 
 @Controller
 public class PruebaControlador {
 
 	@Autowired
-	private IPersonaRepo repo;
+	private IUsuarioDao repo;
 	
 	@GetMapping("/")
 	public String base(Model model) {
