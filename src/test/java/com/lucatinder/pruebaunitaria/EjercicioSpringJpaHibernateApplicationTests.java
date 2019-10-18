@@ -1,4 +1,4 @@
-package com.jorge.ejercicio;
+package com.lucatinder.pruebaunitaria;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
