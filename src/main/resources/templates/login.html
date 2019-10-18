@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title> Registro de usuario</title>
+    </head>
+    <body>
+    
+		<h1>BIENVENIDO A LUCATINDER</h1>
+		
+		<form th:action="@{/}" th:object="${usuario}"
+			method="post">
+			<div>
+				Usuario: <input type="text" th:field="*{nombre}" />
+			</div>
+			<div>
+				Contraseña: <input type="text" th:field="*{contrasena}" />
+			</div>
+			<div>
+				<p th:text="${status}"></p>
+			</div>
+			<div>
+				<input type="submit" value="Login" />
+				<P>Aún no te has registrado? Registrate <a href="/formularioalta"> aquí.</a></P>
+			</div>
+			
+		</form>
+   
+    </body>
+</html>
