@@ -36,7 +36,7 @@ public class Usuario {
 	public Usuario() {
 
 	}
-    	
+	
 	// Se rellena el constructor con los todos los atributos.
 	public Usuario(int idUsuario, String nombre, String password, String genero, int edad, String descripcion) {
 		super();
