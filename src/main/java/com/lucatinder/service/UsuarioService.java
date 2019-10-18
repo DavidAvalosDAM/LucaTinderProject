@@ -1,5 +1,7 @@
 package com.lucatinder.service;
 
-public interface UsuarioService {
+import com.lucatinder.model.Usuario;
 
+public interface UsuarioService {
+	public void guardarUsuario(Usuario u);
 }
