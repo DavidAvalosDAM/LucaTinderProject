@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
+import com.lucatinder.pruebaunitaria.dao.IPersonaRepo;
 
 @Controller
 public class PruebaControlador {
