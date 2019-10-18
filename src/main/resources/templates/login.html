@@ -10,7 +10,7 @@
 		<h1>BIENVENIDO A LUCATINDER</h1>
 		
 		<form th:action="@{/}" th:object="${usuario}"
-			method="get">
+			method="post">
 			<div>
 				Usuario: <input type="text" th:field="*{nombre}" />
 			</div>
@@ -18,8 +18,11 @@
 				Contraseña: <input type="text" th:field="*{contrasena}" />
 			</div>
 			<div>
+				<p th:text="${status}"></p>
+			</div>
+			<div>
 				<input type="submit" value="Login" />
-				<P>Aún no te has registrado? Registrate <a href="registro.html"> aquí.</a></P>
+				<P>Aún no te has registrado? Registrate <a href="/formularioalta"> aquí.</a></P>
 			</div>
 			
 		</form>
