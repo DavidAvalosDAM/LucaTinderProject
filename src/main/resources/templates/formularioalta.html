@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Alta Usuario</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<h1>Formulario</h1>
+		<form th:action="@{/alta}" th:object="${usuario}"
+			method="post">
+			<p>
+				Nombre: <input type="text" th:field="*{nombre}" />
+			</p>
+			<p>
+				Contraseña: <input type="password" th:field="*{contrasena}" minlength=6 maxlength=12 />
+			</p>
+			<p>
+				Género(H/M): <input type="text" th:field="*{genero}" />
+			</p>
+			<p>
+				Edad: <input type="number" th:field="*{edad}" />
+			</p>
+				Descripcion: <input type="text" style="HEIGHT:60px;WIDTH:120px">		
+			<p>
+				<input type="submit" value="Aceptar" /> <input type="reset" value="Reset" />
+			</p>
+		</form>
+	</body> 
+</html>
+

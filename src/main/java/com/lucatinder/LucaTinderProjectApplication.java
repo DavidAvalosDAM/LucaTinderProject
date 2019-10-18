@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EjercicioSpringJpaHibernateApplication {
+public class LucaTinderProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EjercicioSpringJpaHibernateApplication.class, args);
+		SpringApplication.run(LucaTinderProjectApplication.class, args);
 	}
 
 }
