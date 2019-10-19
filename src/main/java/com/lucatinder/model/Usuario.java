@@ -67,7 +67,7 @@ public class Usuario {
 	}
 
 	/**
-	 * Se crean metodos Setters/Getters
+	 * Se crean metodos Setters/Getters y toString
 	 * 
 	 */
 
@@ -130,9 +130,8 @@ public class Usuario {
 	public ArrayList getGustosinformaticos() {
 		return gustosinformaticos;
 	}
-	
-	
-    @Override
+
+	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", name=" + name + ", password="
 				+ password + ", genero=" + genero + ", edad=" + edad + ", descripcion=" + descripcion
@@ -140,9 +139,10 @@ public class Usuario {
 	}
 
 	/**
-     *  
-     * @param gustosinformaticos
-     */
+	 * 
+	 *  Creamos un metodo para que nos devuelva los gustos informaticos.
+	 *  @ author Yolanda
+	 */
 	public void setGustosinformaticos(ArrayList gustosinformaticos) {
 		this.gustosinformaticos = gustosinformaticos;
 	}
