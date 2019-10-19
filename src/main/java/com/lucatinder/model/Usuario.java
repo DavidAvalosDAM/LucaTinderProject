@@ -23,10 +23,10 @@ public class Usuario {
 
 	@Column(name = "username", unique = true, nullable = false)
 	private String username;
-	
+
 	@Column(name = "name", nullable = false)
 	private String name;
-	
+
 	@Column(name = "password", nullable = false)
 	private String password;
 
@@ -53,16 +53,16 @@ public class Usuario {
 	 * Se rellena el constructor con los todos los atributos menos gustos
 	 * informáticos(opcional).
 	 */
-	public Usuario(int idUsuario,String username, String nombre, String password, String genero, int edad, String descripcion) {
+	public Usuario(int idUsuario, String username, String nombre, String password, String genero, int edad,
+			String descripcion) {
 		super();
-		this.idUsuario= idUsuario;
-		this.username= username;
-		this.name=name;
-		this.password= password;
-		this.genero=genero;
-		this.edad=edad;
-		this.descripcion=descripcion;
-		
+		this.idUsuario = idUsuario;
+		this.username = username;
+		this.name = name;
+		this.password = password;
+		this.genero = genero;
+		this.edad = edad;
+		this.descripcion = descripcion;
 
 	}
 
@@ -70,7 +70,7 @@ public class Usuario {
 	 * Se crean metodos Setters/Getters
 	 * 
 	 */
-   
+
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -130,6 +130,19 @@ public class Usuario {
 	public ArrayList getGustosinformaticos() {
 		return gustosinformaticos;
 	}
+	
+	
+    @Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", name=" + name + ", password="
+				+ password + ", genero=" + genero + ", edad=" + edad + ", descripcion=" + descripcion
+				+ ", gustosinformaticos=" + gustosinformaticos + "]";
+	}
+
+	/**
+     *  
+     * @param gustosinformaticos
+     */
 	public void setGustosinformaticos(ArrayList gustosinformaticos) {
 		this.gustosinformaticos = gustosinformaticos;
 	}
