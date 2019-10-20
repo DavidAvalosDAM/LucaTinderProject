@@ -12,6 +12,10 @@ import com.lucatinder.service.UsuarioService;
 import com.lucatinder.service.UsuarioServiceImpl;
 
 @Controller
+/**
+ * @author Iván
+ *En esta clase se realizaran todas las operaciones de control.
+ */
 public class Controlador {
 	
 	@Autowired
@@ -20,6 +24,10 @@ public class Controlador {
 	@Autowired
 	private UsuarioService usi;
 	
+	/**
+	 *@author Iván 
+	 *Método para entrar en login.
+	 */
 	@GetMapping("/")
 	public String  urlLogin(Model model) {		
 		model.addAttribute("usuario",new Usuario());
@@ -27,6 +35,10 @@ public class Controlador {
 		return "login";
 	}
 	
+	/**
+	 * @author Iván
+	 * Metodo para comprobar usuario y contraseña.
+	 */
 	@PostMapping("/")
 	public String  urlLoginEnviado(Usuario u,Model model) {	
 		if (u.getPassword().equals(dao.buscaPorNombre(u.getNombre()).getPassword())){
@@ -40,6 +52,10 @@ public class Controlador {
 		}	
 	}
 	
+	/**
+	 * @author Iván
+	 * Los siguientes 2 métodos sirven para en caso de no estar registrado te puedas registrar (guardar usuario).
+	 */
 	@GetMapping("/alta")
 	public String urlAlta(Model model) {
 		model.addAttribute("usuario", new Usuario());
