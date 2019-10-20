@@ -23,7 +23,6 @@ public class Contactos implements Serializable {
 	private int IdUsuarioContactado;
 	
 	
-	
 	public Contactos() {
 		super();
 		
