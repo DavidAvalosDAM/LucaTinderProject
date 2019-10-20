@@ -12,7 +12,7 @@ import javax.persistence.IdClass;
  * @author Yolanda
  *
  */
-@Entity @IdClass(value = Contactos.class)
+/*@Entity @IdClass(value = Contactos.class)
 
 public class Contactos implements Serializable {
 	
@@ -59,7 +59,8 @@ public class Contactos implements Serializable {
 		return "Contactos [IdUsuarioContactante=" + IdUsuarioContactante + ", IdUsuarioContactado="
 				+ IdUsuarioContactado + "]";
 	}
-}
+	
+}*/
 	
 	
     

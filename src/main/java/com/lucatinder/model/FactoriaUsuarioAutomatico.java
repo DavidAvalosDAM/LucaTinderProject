@@ -31,7 +31,7 @@ public class FactoriaUsuarioAutomatico {
 		Usuario u=new Usuario();
 		log.info("Iniciando Creación de Usuario Falseado");
 		
-		u.setName(creadorFaker.name().fullName());
+		u.setName(creadorFaker.name().fullName().replaceAll(" ", ""));
 		u.setEdad(RandomRange.devuelveEnRango(18, 60));
 		u.setGenero((Math.random()>0.5)?"M":"F");
 		u.setUsername("@Bot"+u.getName()+u.getEdad()+u.getGenero());

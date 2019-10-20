@@ -2,7 +2,6 @@ package com.lucatinder.pruebaunitaria;
 
 import static org.junit.Assert.assertTrue;
 
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +33,50 @@ public class LucaTinderApplicationTests {
 	 @Autowired
 	 private IUsuarioDao dao;
 
-	/*@Test
+	@Test
 	public void pruebaInsertarUsuario() {
 		
-		Usuario u = new Usuario ();
+		Usuario u = FactoriaUsuarioAutomatico.devuelveUsuarioAuto();
 		long longitud=dao.count();
 	    service.guardarUsuario(u);
 	   
-	    assertTrue( longitud== dao.count()-1);*/
-	    
+	    assertTrue( longitud== dao.count()-1);
+	}
+	   
+	 /**
+	  * Prueba Unitaria para comprobar el guardado de un usuario automático
+	  * 
+	  * @author Jorge
+	  * @date 20/10/2019
+	  * 
+	  */
 	 @Test
 	 public void guardarUsuario() {
 		 Usuario u=FactoriaUsuarioAutomatico.devuelveUsuarioAuto();
-		 service.guardarUsuarioAutomatico(u);
+		 service.guardarUsuario(u);
+		 
 	}
-
+	 /**
+	  * Prueba Unitaria para comprobar el guardado de múltiples usuarios automáticos
+	  * 
+	  * @author Jorge
+	  * @date 20/10/2019
+	  * 
+	  */
+	 @Test
+	 public void guardarListaUsuarios() {
+		 service.guardarUsuariosAutomaticos(FactoriaUsuarioAutomatico.devuelveUsuariosAuto(5));
+		 
+	 }
+	 /**
+	  * Prueba Unitaria para comprobar el borrado de todos los usuarios introducidos
+	  * 
+	  * @author Jorge
+	  * @date 20/10/2019
+	  * 
+	  */
+	 @Test
+	 public void eliminarTodos() {
+		 service.eliminarTodos();
+	 }
 }

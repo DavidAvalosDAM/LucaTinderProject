@@ -21,16 +21,16 @@ public class Usuario {
 	@Column(name = "idUsuario")
 	private int idUsuario;
 
-	@Column(name = "username", unique = true, nullable = false)
+	@Column(name = "username", unique = true, nullable = false, length = 40)
 	private String username;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", nullable = false, length = 40)
 	private String name;
 
-	@Column(name = "password", nullable = false)
+	@Column(name = "password", nullable = false, length = 40)
 	private String password;
 
-	@Column(name = "genero", nullable = false)
+	@Column(name = "genero", nullable = false, length = 3)
 	private String genero;
 
 	@Column(name = "edad", nullable = false)
@@ -39,8 +39,8 @@ public class Usuario {
 	@Column(name = "descripcion", nullable = true, length = 200)
 	private String descripcion;
 
-	@Column(name = "gustosinformaticos", nullable = true)
-	private ArrayList gustosinformaticos=new ArrayList<>();
+	/*@Column(name = "gustosinformaticos", nullable = true)
+	private ArrayList gustosinformaticos=new ArrayList<>();*/
 
 	/**
 	 * Se crea el constructor vacio por defecto//
@@ -127,23 +127,13 @@ public class Usuario {
 		this.descripcion = descripcion;
 	}
 
-	public ArrayList getGustosinformaticos() {
-		return gustosinformaticos;
-	}
 
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", name=" + name + ", password="
 				+ password + ", genero=" + genero + ", edad=" + edad + ", descripcion=" + descripcion
-				+ ", gustosinformaticos=" + gustosinformaticos + "]";
+				+ ", gustosinformaticos=" + "]";
 	}
 
-	/**
-	 * 
-	 *  Creamos un metodo para que nos devuelva los gustos informaticos.
-	 *  @ author Yolanda
-	 */
-	public void setGustosinformaticos(ArrayList gustosinformaticos) {
-		this.gustosinformaticos = gustosinformaticos;
-	}
+	
 }
