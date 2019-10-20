@@ -15,4 +15,5 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 			  value = "SELECT * FROM usuarios WHERE nombre = ?1", 
 			  nativeQuery = true)
 			Usuario buscaPorNombre(String nombre);
-}
+
+	}

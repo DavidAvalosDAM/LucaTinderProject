@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-/*
+/**
+ * Creamos clase Usuario.
+ * @version 1.0
+ * @date 18/10/2019
  * @autor Yolanda
- * Creamos modelo tabla
- */
+ **/
 @Entity
 public class Usuario {
 
@@ -19,28 +21,49 @@ public class Usuario {
 	@Column(name = "idUsuario")
 	private int idUsuario;
 
+	@Column(name = "username", unique = true, nullable = false)
+	private String username;
+
+	@Column(name = "name", nullable = false)
 	private String nombre;
 
+	@Column(name = "password", nullable = false)
 	private String password;
 
+	@Column(name = "genero", nullable = false)
 	private String genero;
 
+	@Column(name = "edad", nullable = false)
 	private int edad;
 
-	@Column(length = 200)
+	@Column(name = "descripcion", nullable = true, length = 200)
 	private String descripcion;
-	
-	private ArrayList gustosinformaticos;
 
-	// Se crea el constructor vacio por defecto//
+	@Column(name = "gustosinformaticos", nullable = true)
+	private ArrayList gustosinformaticos = new ArrayList<>();
+
+	/**
+	 * Se crea el constructor vacio por defecto//
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
+	 */
 	public Usuario() {
 
 	}
-    	
-	// Se rellena el constructor con los todos los atributos.
-	public Usuario(int idUsuario, String nombre, String password, String genero, int edad, String descripcion) {
+
+	/**
+	 * Se rellena el constructor con los todos los atributos menos gustos
+	 * informáticos(opcional).
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
+	 */
+	public Usuario(int idUsuario, String username, String nombre, String password, String genero, int edad,
+			String descripcion) {
 		super();
 		this.idUsuario = idUsuario;
+		this.username = username;
 		this.nombre = nombre;
 		this.password = password;
 		this.genero = genero;
@@ -49,7 +72,12 @@ public class Usuario {
 
 	}
 
-	// Se crean metodos Setters/Getters
+	/**
+	 * Se crean metodos Setters/Getters y toString
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
+	 */
 
 	public int getIdUsuario() {
 		return idUsuario;
@@ -57,6 +85,14 @@ public class Usuario {
 
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getNombre() {
@@ -102,10 +138,21 @@ public class Usuario {
 	public ArrayList getGustosinformaticos() {
 		return gustosinformaticos;
 	}
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", nombre=" + nombre + ", password="
+				+ password + ", genero=" + genero + ", edad=" + edad + ", descripcion=" + descripcion
+				+ ", gustosinformaticos=" + gustosinformaticos + "]";
+	}
 
+	/**
+	 * Creamos un metodo para que nos devuelva los gustos informaticos. @ author
+	 * Yolanda
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
+	 */
 	public void setGustosinformaticos(ArrayList gustosinformaticos) {
 		this.gustosinformaticos = gustosinformaticos;
 	}
-    
-			
-	}
+}
