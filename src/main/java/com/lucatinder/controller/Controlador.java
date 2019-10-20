@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.model.Persona;
 import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
 import com.lucatinder.service.UsuarioService;
@@ -57,9 +58,12 @@ public class Controlador {
 	 * @date 20/10/2019
 	 * @autor Yolanda
 	 */
-	@GetMapping("/datos")
-	public String urlMisDatos(Model model) {
-		return "formularioAlta";
+	@PostMapping("/datos")
+	public String urlMisDatos(Usuario u,Model model) {
+		
+		model.addAttribute("usuario", u);
+		
+		return "datos";
 	
 }
 }
