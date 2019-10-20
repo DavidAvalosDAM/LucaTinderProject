@@ -47,7 +47,7 @@ public class FactoriaUsuarioAutomatico {
 		
 		return u;
 	}
-	/**
+	/**Método encargado de devolver "n" usuarios completos falseados
 	 * @author Jorge
 	 * @date 20/10/2019
 	 * @param numeroUsuarios
