@@ -6,7 +6,10 @@
 	</head>
 	<body>
 		<ul> 
-			<li th:each="${usuario[i.index]}"> </li>
+			<li th:each="${usuario[i.index]}"> 
+				<input type="button" value="Like" onClick="this.disabled='disabled'" >
+				<input type="button" value="No Like" onClick="this.disabled='disabled'" >
+			</li>
         
     	</ul>
 	</body> 
