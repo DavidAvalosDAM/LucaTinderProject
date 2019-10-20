@@ -1,69 +1,80 @@
 package com.lucatinder.model;
 
-import java.io.Serializable;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  * Creamos la clase Contactos,listado de perfiles en la que el usuario1 
  * hace un link sobre el usuario 2.
  * @author Yolanda
+ * @version 1.0
+ * @date 20/10/2019 
  *
  */
-/*@Entity @IdClass(value = Contactos.class)
+@Entity 
 
-public class Contactos implements Serializable {
+public class Contactos  {
 	
-	private static final long serialVersionUID = 1L;
 	@Id
-	private int IdUsuarioContactante;
-	@Id
-	private int IdUsuarioContactado;
+	@GeneratedValue
+	private int id;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUsuarioContactante", referencedColumnName = "idUsuario")
+	private Usuario usuarioContactante;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUsuarioContactado", referencedColumnName = "idUsuario")
+	private Usuario usuarioContactado;
+
 	public Contactos() {
 		super();
-		
 	}
 
-	public Contactos(int idUsuarioContactante, int idUsuarioContactado) {
+	public Contactos(int id, Usuario usuarioContactante, Usuario usuarioContactado) {
 		super();
-		IdUsuarioContactante = idUsuarioContactante;
-		IdUsuarioContactado = idUsuarioContactado;
+		this.id = id;
+		this.usuarioContactante = usuarioContactante;
+		this.usuarioContactado = usuarioContactado;
 	}
 
-	public int getIdUsuarioContactante() {
-		return IdUsuarioContactante;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdUsuarioContactante(int idUsuarioContactante) {
-		IdUsuarioContactante = idUsuarioContactante;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getIdUsuarioContactado() {
-		return IdUsuarioContactado;
+	public Usuario getUsuarioContactante() {
+		return usuarioContactante;
 	}
 
-	public void setIdUsuarioContactado(int idUsuarioContactado) {
-		IdUsuarioContactado = idUsuarioContactado;
+	public void setUsuarioContactante(Usuario usuarioContactante) {
+		this.usuarioContactante = usuarioContactante;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Usuario getUsuarioContactado() {
+		return usuarioContactado;
+	}
+
+	public void setUsuarioContactado(Usuario usuarioContactado) {
+		this.usuarioContactado = usuarioContactado;
 	}
 
 	@Override
 	public String toString() {
-		return "Contactos [IdUsuarioContactante=" + IdUsuarioContactante + ", IdUsuarioContactado="
-				+ IdUsuarioContactado + "]";
+		return "Contactos [id=" + id + ", usuarioContactante=" + usuarioContactante + ", usuarioContactado="
+				+ usuarioContactado + "]";
 	}
 	
-}*/
 	
 	
-    
- 
 
+ }
 
+	

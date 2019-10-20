@@ -9,9 +9,9 @@ import javax.persistence.Id;
 
 /**
  * Creamos clase Usuario.
- * 
+ * @version 1.0
+ * @date 18/10/2019
  * @autor Yolanda
- * 
  **/
 @Entity
 public class Usuario {
@@ -24,8 +24,8 @@ public class Usuario {
 	@Column(name = "username", unique = true, nullable = false, length = 40)
 	private String username;
 
-	@Column(name = "name", nullable = false, length = 40)
-	private String name;
+	@Column(name = "nombre", nullable = false, length = 40)
+	private String nombre;
 
 	@Column(name = "password", nullable = false, length = 40)
 	private String password;
@@ -44,6 +44,9 @@ public class Usuario {
 
 	/**
 	 * Se crea el constructor vacio por defecto//
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
 	 */
 	public Usuario() {
 
@@ -52,13 +55,16 @@ public class Usuario {
 	/**
 	 * Se rellena el constructor con los todos los atributos menos gustos
 	 * informáticos(opcional).
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
 	 */
 	public Usuario(int idUsuario, String username, String nombre, String password, String genero, int edad,
 			String descripcion) {
 		super();
 		this.idUsuario = idUsuario;
 		this.username = username;
-		this.name = name;
+		this.nombre = nombre;
 		this.password = password;
 		this.genero = genero;
 		this.edad = edad;
@@ -68,7 +74,9 @@ public class Usuario {
 
 	/**
 	 * Se crean metodos Setters/Getters y toString
-	 * 
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
 	 */
 
 	public int getIdUsuario() {
@@ -87,12 +95,12 @@ public class Usuario {
 		this.username = username;
 	}
 
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getPassword() {
@@ -127,10 +135,9 @@ public class Usuario {
 		this.descripcion = descripcion;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", name=" + name + ", password="
+		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", nombre=" + nombre + ", password="
 				+ password + ", genero=" + genero + ", edad=" + edad + ", descripcion=" + descripcion
 				+ ", gustosinformaticos=" + "]";
 	}

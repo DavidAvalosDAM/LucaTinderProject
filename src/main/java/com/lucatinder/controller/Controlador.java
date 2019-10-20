@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
 import com.lucatinder.service.UsuarioService;
-import com.lucatinder.service.UsuarioServiceImpl;
 
 @Controller
 public class Controlador {
@@ -51,4 +50,18 @@ public class Controlador {
 		usi.guardarUsuario(u);
 		return "formularioAlta";
 	}
+	/**
+	 * Método creado para mostrar en html los datos del usuario
+	 * @version 1.0
+	 * @date 20/10/2019
+	 * @autor Yolanda
+	 */
+	@PostMapping("/datos")
+	public String urlMisDatos(Usuario u,Model model) {
+		
+		model.addAttribute("usuario", u);
+		
+		return "datos";
+	
+}
 }
