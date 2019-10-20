@@ -9,9 +9,9 @@ import javax.persistence.Id;
 
 /**
  * Creamos clase Usuario.
- * 
+ * @version 1.0
+ * @date 18/10/2019
  * @autor Yolanda
- * 
  **/
 @Entity
 public class Usuario {
@@ -25,7 +25,7 @@ public class Usuario {
 	private String username;
 
 	@Column(name = "name", nullable = false)
-	private String name;
+	private String nombre;
 
 	@Column(name = "password", nullable = false)
 	private String password;
@@ -40,10 +40,13 @@ public class Usuario {
 	private String descripcion;
 
 	@Column(name = "gustosinformaticos", nullable = true)
-	private ArrayList gustosinformaticos=new ArrayList<>();
+	private ArrayList gustosinformaticos = new ArrayList<>();
 
 	/**
 	 * Se crea el constructor vacio por defecto//
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
 	 */
 	public Usuario() {
 
@@ -52,13 +55,16 @@ public class Usuario {
 	/**
 	 * Se rellena el constructor con los todos los atributos menos gustos
 	 * informáticos(opcional).
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
 	 */
 	public Usuario(int idUsuario, String username, String nombre, String password, String genero, int edad,
 			String descripcion) {
 		super();
 		this.idUsuario = idUsuario;
 		this.username = username;
-		this.name = name;
+		this.nombre = nombre;
 		this.password = password;
 		this.genero = genero;
 		this.edad = edad;
@@ -68,7 +74,9 @@ public class Usuario {
 
 	/**
 	 * Se crean metodos Setters/Getters y toString
-	 * 
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
 	 */
 
 	public int getIdUsuario() {
@@ -87,12 +95,12 @@ public class Usuario {
 		this.username = username;
 	}
 
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getPassword() {
@@ -130,18 +138,19 @@ public class Usuario {
 	public ArrayList getGustosinformaticos() {
 		return gustosinformaticos;
 	}
-
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", name=" + name + ", password="
+		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", nombre=" + nombre + ", password="
 				+ password + ", genero=" + genero + ", edad=" + edad + ", descripcion=" + descripcion
 				+ ", gustosinformaticos=" + gustosinformaticos + "]";
 	}
 
 	/**
-	 * 
-	 *  Creamos un metodo para que nos devuelva los gustos informaticos.
-	 *  @ author Yolanda
+	 * Creamos un metodo para que nos devuelva los gustos informaticos. @ author
+	 * Yolanda
+	 * @version 1.0
+	 * @date 18/10/2019
+	 * @autor Yolanda
 	 */
 	public void setGustosinformaticos(ArrayList gustosinformaticos) {
 		this.gustosinformaticos = gustosinformaticos;

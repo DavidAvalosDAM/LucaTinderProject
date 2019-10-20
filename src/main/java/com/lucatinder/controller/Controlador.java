@@ -51,4 +51,15 @@ public class Controlador {
 		usi.guardarUsuario(u);
 		return "formularioAlta";
 	}
+	/**
+	 * Método creado para mostrar en html los datos del usuario
+	 * @version 1.0
+	 * @date 20/10/2019
+	 * @autor Yolanda
+	 */
+	@GetMapping("/datos")
+	public String urlMisDatos(Model model) {
+		return "formularioAlta";
+	
+}
 }
