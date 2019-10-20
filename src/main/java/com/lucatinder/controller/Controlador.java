@@ -6,11 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.model.Persona;
 import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
 import com.lucatinder.service.UsuarioService;
-import com.lucatinder.service.UsuarioServiceImpl;
 
 @Controller
 public class Controlador {
