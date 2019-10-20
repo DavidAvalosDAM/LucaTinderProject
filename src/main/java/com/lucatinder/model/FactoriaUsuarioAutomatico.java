@@ -16,8 +16,8 @@ import com.lucatinder.util.RandomRange;
  */
 public class FactoriaUsuarioAutomatico {
 	
-	private Faker creadorFaker=new Faker(new Locale("es"));
-	private Logger log=Logger.getLogger("FactoriaUsuarioAutomatico: -------");
+	private static Faker creadorFaker=new Faker(new Locale("es"));
+	private static Logger log=Logger.getLogger("FactoriaUsuarioAutomatico: -------");
 	
 	public FactoriaUsuarioAutomatico() {}
 	
@@ -27,14 +27,14 @@ public class FactoriaUsuarioAutomatico {
 	 * @date 20/10/2019
 	 * @return Usuario con datos falseados
 	 */
-	public Usuario devuelveUsuarioAuto() {
+	public static Usuario devuelveUsuarioAuto() {
 		Usuario u=new Usuario();
 		log.info("Iniciando Creación de Usuario Falseado");
 		
 		u.setName(creadorFaker.name().fullName());
 		u.setEdad(RandomRange.devuelveEnRango(18, 60));
 		u.setGenero((Math.random()>0.5)?"M":"F");
-		u.setUsername("@Bot"+Math.random()*100+u.getName()+u.getEdad()+u.getGenero());
+		u.setUsername("@Bot"+u.getName()+u.getEdad()+u.getGenero());
 		u.setPassword(u.getUsername()+"pass");
 		u.setDescripcion("Soy un bot, y estoy interesado en robar tus datos y venderlos");
 		
@@ -53,7 +53,7 @@ public class FactoriaUsuarioAutomatico {
 	 * @param numeroUsuarios
 	 * @return Lista de Usuarios Falseados con longitud personalizable
 	 */
-	public List<Usuario> devuelveUsuariosAuto(int numeroUsuarios){
+	public static List<Usuario> devuelveUsuariosAuto(int numeroUsuarios){
 		List<Usuario> listaUsuariosAuto=new ArrayList<>();
 		log.info("Generando Lista Usuarios Falseados. Longitud:"+numeroUsuarios);
 		for (int i=0;i<numeroUsuarios;i++) {

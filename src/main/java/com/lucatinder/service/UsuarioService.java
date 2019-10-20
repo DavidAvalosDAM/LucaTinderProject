@@ -12,6 +12,6 @@ public interface UsuarioService {
 
 	public List<Usuario> list();
 
-	public void guadarUsuarioAutomativo(Usuario u);
+	public void guardarUsuarioAutomatico(Usuario u);
 
 }
