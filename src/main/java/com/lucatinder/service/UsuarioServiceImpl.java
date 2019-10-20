@@ -9,11 +9,6 @@ import com.lucatinder.model.Usuario;
 public class UsuarioServiceImpl implements UsuarioService {
 
 	private IUsuarioDao usuDao;
-	@PersistenceContext
-	private EntityManager entityManager;
-	/**
-	 * Guardar y eliminar usuario en la bbdd
-	 */
 	public void guardarUsuario(Usuario u) {
 		usuDao.save(u);
 	}

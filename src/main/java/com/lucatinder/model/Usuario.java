@@ -36,11 +36,11 @@ public class Usuario {
 	@Column(name = "edad", nullable = false)
 	private int edad;
 
-	@Column(name = "descripcion", nullable = false, length = 200)
+	@Column(name = "descripcion", nullable = true, length = 200)
 	private String descripcion;
 
-	@Column(name = "gustoinformaticos", nullable = false, length = 500)
-	private ArrayList gustosinformaticos;
+	@Column(name = "gustosinformaticos", nullable = true)
+	private ArrayList gustosinformaticos=new ArrayList<>();
 
 	/**
 	 * Se crea el constructor vacio por defecto//
