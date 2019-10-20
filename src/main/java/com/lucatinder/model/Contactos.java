@@ -24,11 +24,11 @@ public class Contactos  {
 	private int id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idUsuarioContactante", referencedColumnName = "id")
+    @JoinColumn(name = "idUsuarioContactante", referencedColumnName = "idUsuario")
 	private Usuario usuarioContactante;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idUsuarioContactado", referencedColumnName = "id")
+    @JoinColumn(name = "idUsuarioContactado", referencedColumnName = "idUsuario")
 	private Usuario usuarioContactado;
 
 	public Contactos() {
