@@ -28,7 +28,7 @@ public class Controlador {
 		return "login";
 	}
 	
-	@PostMapping("/")
+	/*@PostMapping("/")
 	public String  urlLoginEnviado(Usuario u,Model model) {	
 		if (u.getPassword().equals(dao.buscaPorNombre(u.getNombre()).getPassword())){
 			model.addAttribute("usuario",u);
@@ -39,7 +39,7 @@ public class Controlador {
 			model.addAttribute("status","El usuario o la contraseña son incorrectos");
 			return "login";
 		}	
-	}
+	}*/
 	
 	@GetMapping("/alta")
 	public String urlAlta(Model model) {
