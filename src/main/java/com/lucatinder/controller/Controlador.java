@@ -123,7 +123,6 @@ public class Controlador {
 	public String urlMisDatos(Usuario u, Model model) {
 		model.addAttribute("usuario", u);
 		return "datos";
-	}
 	
 	/**
 	 * Método creado para mostrar los contactos a los que se le ha dado like
@@ -149,5 +148,11 @@ public class Controlador {
 		usi.guardarUsuario(u);
 		model.addAttribute("usuario", u);
 		return "index";
+}
+	
+	@GetMapping("/contactos")
+	public String urlContactos(Model model) {
+		return "listadoContactos";
 	}
+	
 }
