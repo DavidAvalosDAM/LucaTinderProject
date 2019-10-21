@@ -1,22 +1,38 @@
-<!DOCTYPE html>
-<html>
+<head>
+		<title>Alta Usuario</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<h1>Datos Usuario</h1>
+		        
+			<form action="#" th:action="@{/datos}" th:object="${usuario}" method="post">
+			    
+			<div>
+				Username: <input type="text" name="username" th:value= "${usuario.username}" required ></p>
+			</div>
+			<div>
+				Password: <input type="password" name= "password" th:value= "${usuario.password}" minlength=6 maxlength=12 required ></p>
+			</div>
+			<div>
+				<p>Nombre: <input type="text" name= "nombre" th:value= "${usuario.nombre}" required></p>
+			</div>
+			<div>
+				Género(M/F): <input type="text" name="genero" th:value = "${usuario.genero}" pattern="M|F" required></p>
+			</div>
+			<div>
+				Edad: <input type="number" th:name ="edad" th:value = "${usuario.edad}" min=18 max=90 required ></p>
+			</div>
+				Descripcion: <input type="text" th:name= "descripcion" th:value= "${usuario.descripcion}" style="HEIGHT:60px;WIDTH:120px" ></p>
+			<div>
+			
+			<button type=submit>Modificar Usuario</button>
+			</div>
+		    </form>
+		    <div>
+		    <form th:action="@{/eliminar}" th:object="${usuario}" method="post">
+		    	<button type=submit>Eliminar Usuario</button>
+		    </form>
+			</div>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title th:text="'Hola '+${MisDatos}"></title>
-
-        <link rel="stylesheet" href="main.css">
-    </head>
-    <body>
-
-        <h1 class="Controlador" th:text="'Hola' + ${usuario.IdUsuario} + '!'"></h1>
-        <h1 class="Controlador" th:text="'Username' + ${usuario.UserName} + '!'"></h1>
-        <h1 class="Controlador" th:text="'Nombre ' + ${usuario.Nombre} + '!'"></h1>
-        <h1 class="Controlador" th:text="'Password ' + ${usuario.Password} + '!'"></h1>
-        <h1 class="Controlador" th:text="'Edad ' + ${usuario.Edad} + '!'"></h1>
-        <h1 class="Controlador" th:text="'Descripcion ' + ${usuario.Descripcion} + '!'"></h1>
-        <h1 class="Controlador" th:text="'GustosInformaticos ' + ${usuario.GustosInformaticos} + '!'"></h1>
-       
-    </body>
+</body>
 </html>
