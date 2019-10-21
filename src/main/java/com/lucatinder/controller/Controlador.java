@@ -70,7 +70,9 @@ public class Controlador {
 			
 		if (u.getPassword().equals(usuarioComprobador.getPassword())) {
 			log.info("Password coincidente");
-			model.addAttribute("usuario", u);
+			log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"Lo que queremos comprobar ahora debe ser 25");
+			model.addAttribute("usuario", usi.devolverUsuarioPorUsername(u.getUsername()));
+			model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
 			return "index";
 		}else {
 			log.info("Password no coincidente");
@@ -108,6 +110,8 @@ public class Controlador {
 	@PostMapping("/alta")
 	public String urlAltaRecibido(Model model, Usuario u) {
 		usi.guardarUsuario(u);
+		log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"");
+		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
 		return "index";
 	}
 
@@ -135,11 +139,4 @@ public class Controlador {
 		return "formularioAlta";
 	}
 	
-	@PostMapping("/")
-	public String usuarioLista( List<Usuario> listaInicial, Model model) {
-		model.addAttribute("listaInicial", listaInicial);
-		return "index";
-
-	}
-
 }

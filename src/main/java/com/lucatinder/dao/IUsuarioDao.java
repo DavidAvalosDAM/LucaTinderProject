@@ -33,7 +33,7 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 	 * @return Lista de usuarios con un algoritmo sencillo
 	 */
 	@Query(
-			  value = "SELECT * FROM usuario WHERE idUsuario<>?1 LIMIT 20", 
+			  value = "SELECT * FROM usuario WHERE id_usuario <> ?1 LIMIT 20", 
 			  nativeQuery = true)
 			public List<Usuario> devuelveListadoInicialSencillo(int idUsuario);
 
