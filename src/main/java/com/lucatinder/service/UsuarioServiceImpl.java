@@ -41,13 +41,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 		usuDao.deleteAll();
 	}
 	@Override
+	public Usuario devolverUsuarioPorUsername(String userName) {
+		
+		return usuDao.buscaPorUserName(userName);
+	}
 	public List<Usuario> devuelveListadoInicialSencillo(int idUsuario) {
 		
 		return usuDao.devuelveListadoInicialSencillo(idUsuario);
-	}
-	public Usuario devolverUsuarioPorUsername(String userName) {
-		
-		return null;
 	}
 
 
