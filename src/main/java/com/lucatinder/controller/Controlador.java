@@ -71,13 +71,13 @@ public class Controlador {
 	@GetMapping("/alta")
 	public String urlAlta(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "formularioAlta";
+		return "formularioalta";
 	}
 
 	@PostMapping("/alta")
 	public String urlAltaRecibido(Model model, Usuario u) {
 		usi.guardarUsuario(u);
-		return "formularioAlta";
+		return "index";
 	}
 
 	/**
