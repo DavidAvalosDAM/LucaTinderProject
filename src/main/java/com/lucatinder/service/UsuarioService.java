@@ -25,4 +25,6 @@ public interface UsuarioService {
 	public Usuario devolverUsuarioPorUsername(String userName);
 	
 	public void modificarUsuario(Usuario u);
+	
+	public Usuario devuelveUsuarioId(int id);
 }

@@ -135,11 +135,11 @@ public class Controlador {
 		return "formularioAlta";
 	}
 	
-	@PostMapping("/")
+	/*@PostMapping("/")
 	public String usuarioLista( List<Usuario> listaInicial, Model model) {
 		model.addAttribute("listaInicial", listaInicial);
 		return "index";
 
-	}
+	}*/
 
 }

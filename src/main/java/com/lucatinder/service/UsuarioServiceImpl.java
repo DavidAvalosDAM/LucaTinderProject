@@ -1,6 +1,7 @@
 package com.lucatinder.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public void modificarUsuario(Usuario u) {
 		usuDao.save(u);		
+	}
+	@Override
+	public Usuario devuelveUsuarioId(int id) {
+		Optional<Usuario> u=usuDao.findById(id);
+		return u.get();
 	}
 
 

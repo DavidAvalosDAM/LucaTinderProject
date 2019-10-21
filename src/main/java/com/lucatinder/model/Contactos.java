@@ -23,11 +23,11 @@ public class Contactos  {
 	@GeneratedValue
 	private int id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "idUsuarioContactante", referencedColumnName = "idUsuario")
 	private Usuario usuarioContactante;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "idUsuarioContactado", referencedColumnName = "idUsuario")
 	private Usuario usuarioContactado;
 
