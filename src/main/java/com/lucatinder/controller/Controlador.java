@@ -85,8 +85,6 @@ public class Controlador {
 			return "login";
 		}
 		
-			
-		
 	}
 
 	/**
@@ -124,7 +122,6 @@ public class Controlador {
 		model.addAttribute("usuario", u);
 
 		return "datos";
-
 	}
 
 	@GetMapping("/eliminar")
@@ -134,5 +131,4 @@ public class Controlador {
 
 		return "formularioAlta";
 	}
-	
 }
