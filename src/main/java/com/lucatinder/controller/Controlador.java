@@ -94,5 +94,12 @@ public class Controlador {
 		
 		return "datos";
 	
+     }
+	@GetMapping("/eliminar")
+	public String urlEliminarUsuario(Usuario u,Model model) {
+		
+		model.addAttribute("usuario", u);
+		
+		return "formularioAlta";
 }
 }

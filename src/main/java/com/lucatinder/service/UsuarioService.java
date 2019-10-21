@@ -16,7 +16,7 @@ public interface UsuarioService {
 	 **/
 	public void eliminarUsuario(Usuario u);
 
-	public List<Usuario> list();
+	public List<Usuario> devuelveListadoInicialSencillo(int idUsuario);
 
 	public void guardarUsuariosAutomaticos(List<Usuario> listaUsuariosAuto);
 	
