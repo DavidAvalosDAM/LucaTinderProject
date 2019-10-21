@@ -15,17 +15,15 @@
 				Usuario: <input type="text" th:field="*{username}" />
 			</div>
 			<div>
-				Contraseña: <input type="text" th:field="*{password}" />
+				Contraseña: <input type="password" th:field="*{password}" />
 			</div>
 			<div>
 				<p th:text="${status}"></p>
 			</div>
 			<div>
 				<input type="submit" value="Login" />
-				<P>Aún no te has registrado? Registrate <a href="/alta"> aquí.</a></P>
-			</div>
-			
+			</div>		
 		</form>
-   
+   		<P>Aún no te has registrado? Registrate <a href="/alta"> aquí.</a></P>	
     </body>
 </html>
