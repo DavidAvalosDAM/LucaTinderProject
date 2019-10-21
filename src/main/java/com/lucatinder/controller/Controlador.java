@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
+import com.lucatinder.service.IContactoService;
 import com.lucatinder.service.UsuarioService;
 
 @Controller
@@ -28,6 +29,9 @@ public class Controlador {
 
 	@Autowired
 	private UsuarioService usi;
+	
+	@Autowired
+	private IContactoService ics;
 
 	/**
 	 *
@@ -38,6 +42,7 @@ public class Controlador {
 	 * @autor Ivan
 	 *
 	 */
+	
 	@GetMapping("/")
 	public String urlLogin(Model model) {
 		model.addAttribute("usuario", new Usuario());
@@ -83,8 +88,6 @@ public class Controlador {
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
 		}	
-		}
-		
 	}
 
 	/**
@@ -122,28 +125,29 @@ public class Controlador {
 		return "datos";
 	}
 	
+	/**
+	 * Método creado para mostrar los contactos a los que se le ha dado like
+	 * 
+	 * @version 1.0
+	 * @param model
+	 * @autor David
+	 */
 	@GetMapping("/contactos")
-	public String urlContactos(Model model) {
+	public String urlContactos(int idUsuarioContactante, Model model) {
+		model.addAttribute("listaContactos",ics.devuelveListaContactos(idUsuarioContactante));
 		return "listadoContactos";
 	}
-	
-	
-     }
+     
 	@PostMapping("/eliminar")
 	public String urlEliminarUsuario(Usuario u,Model model) {
-		
 		usi.eliminarUsuario(u);
-		
 		return "login";
-		
-}
+	}
+
 	@PostMapping("/modificarDatos")
 	public String urlModificarUsuario(Usuario u,Model model) {
-		
 		usi.guardarUsuario(u);
-	
 		model.addAttribute("usuario", u);
-		
 		return "index";
-}
+	}
 }
