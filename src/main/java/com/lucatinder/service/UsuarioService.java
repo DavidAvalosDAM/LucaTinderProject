@@ -18,6 +18,8 @@ public interface UsuarioService {
 
 	public List<Usuario> list();
 
-	public void guadarUsuarioAutomativo(Usuario u);
+	public void guardarUsuariosAutomaticos(List<Usuario> listaUsuariosAuto);
+	
+	public void eliminarTodos();
 
 }

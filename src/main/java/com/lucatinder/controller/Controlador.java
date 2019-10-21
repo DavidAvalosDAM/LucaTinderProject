@@ -71,13 +71,13 @@ public class Controlador {
 	@GetMapping("/alta")
 	public String urlAlta(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "formularioAlta";
+		return "formularioalta";
 	}
 
 	@PostMapping("/alta")
 	public String urlAltaRecibido(Model model, Usuario u) {
 		usi.guardarUsuario(u);
-		return "formularioAlta";
+		return "index";
 	}
 
 	/**
@@ -87,9 +87,19 @@ public class Controlador {
 	 * @date 20/10/2019
 	 * @autor Yolanda
 	 */
-	@GetMapping("/datos")
-	public String urlMisDatos(Model model) {
+	@PostMapping("/datos")
+	public String urlMisDatos(Usuario u,Model model) {
+		
+		model.addAttribute("usuario", u);
+		
+		return "datos";
+	
+     }
+	@GetMapping("/eliminar")
+	public String urlEliminarUsuario(Usuario u,Model model) {
+		
+		model.addAttribute("usuario", u);
+		
 		return "formularioAlta";
-
-	}
+}
 }

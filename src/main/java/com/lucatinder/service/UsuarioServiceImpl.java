@@ -1,12 +1,19 @@
 package com.lucatinder.service;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 
+	@Autowired
 	private IUsuarioDao usuDao;
+	
 	public void guardarUsuario(Usuario u) {
 		usuDao.save(u);
 	}
@@ -26,10 +33,19 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void guadarUsuarioAutomativo(Usuario u) {
+	public void guardarUsuariosAutomaticos(List<Usuario> listaUsuariosAuto) {
 		
-	    usuDao.save(u);
+		for (Usuario u:listaUsuariosAuto) {
+			usuDao.save(u);
+		}
 	}
+
+	@Override
+	public void eliminarTodos() {
+		
+		usuDao.deleteAll();
+	}
+
 
 	
 		

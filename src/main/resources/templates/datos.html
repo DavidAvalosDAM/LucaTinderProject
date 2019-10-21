@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title th:text="'Hola '+${MisDatos}"></title>
+
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+
+        <h1 class="Controlador" th:text="'Hola' + ${usuario.IdUsuario} + '!'"></h1>
+        <h1 class="Controlador" th:text="'Username' + ${usuario.UserName} + '!'"></h1>
+        <h1 class="Controlador" th:text="'Nombre ' + ${usuario.Nombre} + '!'"></h1>
+        <h1 class="Controlador" th:text="'Password ' + ${usuario.Password} + '!'"></h1>
+        <h1 class="Controlador" th:text="'Edad ' + ${usuario.Edad} + '!'"></h1>
+        <h1 class="Controlador" th:text="'Descripcion ' + ${usuario.Descripcion} + '!'"></h1>
+        <h1 class="Controlador" th:text="'GustosInformaticos ' + ${usuario.GustosInformaticos} + '!'"></h1>
+       
+    </body>
+</html>

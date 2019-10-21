@@ -12,22 +12,26 @@
 		<h1>Formulario</h1>
 		<form th:action="@{/alta}" th:object="${usuario}"
 			method="post">
-			<p>
-				Nombre: <input type="text" th:field="*{nombre}" />
-			</p>
-			<p>
-				Contraseña: <input type="password" th:field="*{contrasena}" minlength=6 maxlength=12 />
-			</p>
-			<p>
-				Género(H/M): <input type="text" th:field="*{genero}" />
-			</p>
-			<p>
-				Edad: <input type="number" th:field="*{edad}" />
-			</p>
-				Descripcion: <input type="text" style="HEIGHT:60px;WIDTH:120px">		
-			<p>
+			<div>
+				Username: <input type="text" th:field="*{username}" required />
+			</div>
+			<div>
+				Password: <input type="password" th:field="*{password}" minlength=6 maxlength=12 required />
+			</div>
+			<div>
+				Nombre: <input type="text" th:field="*{nombre}" required/>
+			</div>
+			
+			<div>
+				Género(M/F): <input type="text" th:field="*{genero}" pattern="M|F" required/>
+			</div>
+			<div>
+				Edad: <input type="number" th:field="*{edad}" min=18 max=90 required />
+			</div>
+				Descripcion: <input type="text" style="HEIGHT:60px;WIDTH:120px" th:field="*{descripcion}">		
+			<div>
 				<input type="submit" value="Aceptar" /> <input type="reset" value="Reset" />
-			</p>
+			</div>
 		</form>
 	</body> 
 </html>
