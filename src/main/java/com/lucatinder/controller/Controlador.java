@@ -91,7 +91,7 @@ public class Controlador {
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
 		}
-	
+	}
 
 	/**
 	 * Los siguientes 2 métodos sirven para en caso de no estar registrado te puedas
@@ -127,7 +127,7 @@ public class Controlador {
 	public String urlMisDatos(Usuario u, Model model) {
 		model.addAttribute("usuario", u);
 		return "datos";
-	
+	}
 	/**
 	 * Método creado para mostrar los contactos a los que se le ha dado like
 	 * 
@@ -142,10 +142,11 @@ public class Controlador {
 	}
 	
 	@PostMapping("/addContacto")
-	public String urlLikeContactos (Contactos c, Model model) {
-		
-		model.addAttribute("idContactante", c);
-		return "listadoContactos";
+	public String urlLikeContactos (Usuario u,Contactos c, Model model) {
+		ics.contactar(c);
+		model.addAttribute("contacto",new Contactos() );
+		model.addAttribute("usuario",u);
+		return "index";
 	}
 
 	@PostMapping("/eliminar")
