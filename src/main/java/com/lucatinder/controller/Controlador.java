@@ -83,6 +83,8 @@ public class Controlador {
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
 		}	
+		}
+		
 	}
 
 	/**
