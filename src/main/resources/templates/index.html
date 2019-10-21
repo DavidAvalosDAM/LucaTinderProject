@@ -5,13 +5,18 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
 	<body>
-		<ul> 
-			<li th:each="${usuario[i.index]}"> 
-				<input type="button" value="Like" onClick="this.disabled='disabled'" >
-				<input type="button" value="No Like" onClick="this.disabled='disabled'" >
-			</li>
+          <div> 
+              <h1 style= "text-align: center">L U C A T I N D E R</h1>
+          </div> 
+   		<div style= "background-color: lightcoral">
+			<ul> 
+				<li th:each="${usuario[i.index]}"> 
+					<input type="button" value="Like" onClick="this.disabled='disabled'" >
+					<input type="button" value="No Like" onClick="this.disabled='disabled'" >
+				</li>
         
-    	</ul>
+    		</ul>
+    	</div>
 	</body> 
 </html>
 
