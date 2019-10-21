@@ -27,11 +27,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 		usuDao.delete(u);
 	}
 
-	public List<Usuario> list() {
-
-		  return usuDao.findAll();
-	}
-
 	@Override
 	public void guardarUsuariosAutomaticos(List<Usuario> listaUsuariosAuto) {
 		
@@ -44,6 +39,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public void eliminarTodos() {
 		
 		usuDao.deleteAll();
+	}
+	@Override
+	public List<Usuario> devuelveListadoInicialSencillo(int idUsuario) {
+		
+		return usuDao.devuelveListadoInicialSencillo(idUsuario);
 	}
 
 
