@@ -42,7 +42,7 @@ public class LucaTinderApplicationTests {
 		service.guardarUsuario(u);
 
 		assertTrue(longitud == dao.count() - 1);
-	}
+	}*/
 
 	/**
 	 * Prueba Unitaria para comprobar el guardado de un usuario automático
@@ -56,7 +56,7 @@ public class LucaTinderApplicationTests {
 		Usuario u = FactoriaUsuarioAutomatico.devuelveUsuarioAuto();
 		service.guardarUsuario(u);
 
-	}
+	}*/
 
 	/**
 	 * Prueba Unitaria para comprobar el guardado de múltiples usuarios automáticos
@@ -69,7 +69,7 @@ public class LucaTinderApplicationTests {
 	public void guardarListaUsuarios() {
 		service.guardarUsuariosAutomaticos(FactoriaUsuarioAutomatico.devuelveUsuariosAuto(5));
 
-	}
+	}*/
 /*
 	/**
 	 * Prueba Unitaria para comprobar el borrado de todos los usuarios introducidos
@@ -84,7 +84,7 @@ public class LucaTinderApplicationTests {
 	}*/
 	
 	
-	@Test
+	/*@Test
 	public void asignarContactoNuevo() {
 		
 		Contactos contactoNuevo=new Contactos();

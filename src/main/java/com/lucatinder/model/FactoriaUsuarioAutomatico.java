@@ -30,11 +30,11 @@ public class FactoriaUsuarioAutomatico {
 	public static Usuario devuelveUsuarioAuto() {
 		Usuario u=new Usuario();
 		log.info("Iniciando Creación de Usuario Falseado");
-		
-		u.setNombre(creadorFaker.name().fullName().replaceAll(" ", ""));
+	
+		u.setNombre(creadorFaker.name().fullName());
 		u.setEdad(RandomRange.devuelveEnRango(18, 60));
 		u.setGenero((Math.random()>0.5)?"M":"F");
-		u.setUsername("@Bot"+u.getNombre()+u.getEdad()+u.getGenero());
+		u.setUsername("@Bot"+u.getNombre().replaceAll(" ","")+u.getEdad()+u.getGenero());
 		u.setPassword(u.getUsername()+"pass");
 		u.setDescripcion("Soy un bot, y estoy interesado en robar tus datos y venderlos");
 		
