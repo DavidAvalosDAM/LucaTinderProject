@@ -2,6 +2,8 @@ package com.lucatinder.pruebaunitaria;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Contactos;
-import com.lucatinder.model.FactoriaUsuarioAutomatico;
 import com.lucatinder.model.Usuario;
 import com.lucatinder.service.IContactoService;
 import com.lucatinder.service.UsuarioService;
@@ -70,20 +71,14 @@ public class LucaTinderApplicationTests {
 		service.guardarUsuariosAutomaticos(FactoriaUsuarioAutomatico.devuelveUsuariosAuto(5));
 
 	}*/
-/*
+	
 	/**
-	 * Prueba Unitaria para comprobar el borrado de todos los usuarios introducidos
+	 * Prueba Unitaria para comprobar la asignación de un contacto
 	 * 
 	 * @author Jorge
 	 * @date 20/10/2019
 	 * 
 	 */
-	/*@Test
-	public void eliminarTodos() {
-		service.eliminarTodos();
-	}*/
-	
-	
 	/*@Test
 	public void asignarContactoNuevo() {
 		
@@ -95,10 +90,44 @@ public class LucaTinderApplicationTests {
 		
 		
 		
-	}
-	/*
+	}*/
+	/**
+	 * Prueba Unitaria para comprobar la devolución de la lista de contactos
+	 * según el id del contactante
+	 * 
+	 * @author Jorge
+	 * @date 20/10/2019
+	 * 
+	 */
 	@Test
 	public void retornaListaContactos() {
 		
-	}*/
+		List<Usuario> contactos=contactoService.devuelveListaContactos(15);
+		
+		assertTrue(contactos.get(0)!=null);
+	}
+	
+	@Test
+	public void compruebaMatch() {
+		
+		Contactos c1=new Contactos();
+		c1.setUsuarioContactante(service.devuelveUsuarioId(21));
+		c1.setUsuarioContactado(service.devuelveUsuarioId(17));
+		contactoService.contactar(c1);
+		
+		Contactos c2=new Contactos();
+		c2.setUsuarioContactante(service.devuelveUsuarioId(17));
+		c2.setUsuarioContactado(service.devuelveUsuarioId(21));
+		contactoService.contactar(c2);
+		
+		Contactos c3=new Contactos();
+		c3.setUsuarioContactante(service.devuelveUsuarioId(17));
+		c3.setUsuarioContactado(service.devuelveUsuarioId(21));
+		contactoService.contactar(c3);
+		
+		Contactos c4=new Contactos();
+		c4.setUsuarioContactante(service.devuelveUsuarioId(19));
+		c4.setUsuarioContactado(service.devuelveUsuarioId(20));
+		contactoService.contactar(c4);
+	}
 }

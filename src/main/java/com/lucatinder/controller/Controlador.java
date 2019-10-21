@@ -158,11 +158,11 @@ public class Controlador {
 		model.addAttribute("usuario", u);
 		return "index";
 }
-	
+	/*
 	@GetMapping("/contactos")
 	public String urlContactos(Model model) {
 		return "listadoContactos";
-	}
+	}*/
 	
 	}
 
