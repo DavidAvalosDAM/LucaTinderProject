@@ -50,7 +50,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		return usuDao.devuelveListadoInicialSencillo(idUsuario);
 	}
-}
+	@Override
+	public void modificarUsuario(Usuario u) {
+		usuDao.save(u);		
+	}
+
+
+	
+		
+	}
 	
 	
 	
