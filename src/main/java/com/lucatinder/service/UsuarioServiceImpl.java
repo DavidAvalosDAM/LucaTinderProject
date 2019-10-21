@@ -45,15 +45,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		return usuDao.buscaPorUserName(userName);
 	}
+	
 	public List<Usuario> devuelveListadoInicialSencillo(int idUsuario) {
 		
 		return usuDao.devuelveListadoInicialSencillo(idUsuario);
 	}
-
-
-	
-		
-	}
+}
 	
 	
 	

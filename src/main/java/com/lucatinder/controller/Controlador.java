@@ -75,7 +75,6 @@ public class Controlador {
 			model.addAttribute("usuario", new Usuario());
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
-			
 		}
 		
 		}catch(Exception e) {
@@ -83,10 +82,7 @@ public class Controlador {
 			model.addAttribute("usuario", new Usuario());
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
-		}
-		
-			
-		
+		}	
 	}
 
 	/**
@@ -120,19 +116,19 @@ public class Controlador {
 	 */
 	@PostMapping("/datos")
 	public String urlMisDatos(Usuario u, Model model) {
-
 		model.addAttribute("usuario", u);
-
 		return "datos";
-
 	}
 
 	@GetMapping("/eliminar")
 	public String urlEliminarUsuario(Usuario u, Model model) {
-
 		model.addAttribute("usuario", u);
-
 		return "formularioAlta";
+	}
+	
+	@GetMapping("/contactos")
+	public String urlContactos(Model model) {
+		return "listadoContactos";
 	}
 	
 }
