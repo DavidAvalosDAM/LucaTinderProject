@@ -7,8 +7,12 @@
     <body>
         <table>
             <tr>
-                <td>
-                    
+                <td th:each="elementoLista: ${listaContactos}">
+                    <p th:text="'Usuario: ' + ${elementoLista.username}"></p>
+                    <p th:text="'Nombre: ' + ${elementoLista.nombre}"></p>
+					<p th:text="'Edad:  ' + ${elementoLista.edad}"></p>
+					<p th:text="'Genero:  ' + ${elementoLista.genero}"></p>
+					<p th:text="'Descripción: ' + ${elementoLista.descripcion}"></p>
                 </td>
             </tr>
         </table>

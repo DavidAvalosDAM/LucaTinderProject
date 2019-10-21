@@ -73,8 +73,13 @@ public class LucaTinderApplicationTests {
 	 * @date 20/10/2019
 	 * 
 	 */
-	@Test
+	/*@Test
 	public void eliminarTodos() {
 		service.eliminarTodos();
+	}*/
+	
+	@Test
+	public void retornaListaContactos() {
+		
 	}
 }
