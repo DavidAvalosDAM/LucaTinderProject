@@ -43,7 +43,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario devolverUsuarioPorUsername(String userName) {
 		
-		return null;
+		return usuDao.buscaPorUserName(userName);
 	}
 	public List<Usuario> devuelveListadoInicialSencillo(int idUsuario) {
 		

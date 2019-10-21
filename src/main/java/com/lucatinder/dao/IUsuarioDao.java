@@ -17,11 +17,11 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 	 * Esta query Personalizada nos devuelve un usuario por su userName
 	 * 
 	 * @author Jorge
-	 * @param idUsuario
-	 * @return Lista de usuarios con un algoritmo sencillo
+	 * @param userName
+	 * @return Usuario único por su username
 	 */
 	@Query(
-			  value = "SELECT * FROM usuarios WHERE nombre = ?1", 
+			  value = "SELECT * FROM usuario WHERE username = ?1", 
 			  nativeQuery = true)
 			public Usuario buscaPorUserName(String userName);
 	/**
@@ -33,7 +33,7 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 	 * @return Lista de usuarios con un algoritmo sencillo
 	 */
 	@Query(
-			  value = "SELECT * FROM usuarios WHERE idUsuario<>?1 LIMIT 20", 
+			  value = "SELECT * FROM usuario WHERE idUsuario<>?1 LIMIT 20", 
 			  nativeQuery = true)
 			public List<Usuario> devuelveListadoInicialSencillo(int idUsuario);
 
