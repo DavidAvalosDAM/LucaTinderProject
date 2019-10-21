@@ -12,10 +12,6 @@ import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
 import com.lucatinder.service.UsuarioService;
 
-
-import java.util.List;
-import com.lucatinder.dao.IUsuarioDao;
-import com.lucatinder.model.Usuario;
 @Controller
 /**
  * En esta clase se realizaran todas las operaciones de control.
