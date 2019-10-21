@@ -1,5 +1,7 @@
 package com.lucatinder.controller;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import com.lucatinder.service.UsuarioService;
  */
 public class Controlador {
 
+	private Logger log=Logger.getLogger("Controlador: -------");
 	@Autowired
 	private IUsuarioDao dao;
 
@@ -46,18 +49,41 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @date 18/10/2019
-	 * @autor Ivan
+	 * @autor Ivan & Jorge
 	 */
 	@PostMapping("/")
 	public String urlLoginEnviado(Usuario u, Model model) {
-		if (u.getPassword().equals(usi.devolverUsuarioPorUsername(u.getUsername()).getPassword())) {
+		try {
+			log.info("Recibiendo info de usuario para login");
+			log.info(u.getUsername());
+			log.info(u.getPassword());
+			
+			Usuario usuarioComprobador=usi.devolverUsuarioPorUsername(u.getUsername());
+			log.info("Usuario encontrado:");
+			log.info(usuarioComprobador.getUsername());
+			log.info(usuarioComprobador.getPassword());
+			
+		if (u.getPassword().equals(usuarioComprobador.getPassword())) {
+			log.info("Password coincidente");
 			model.addAttribute("usuario", u);
 			return "index";
-		} else {
+		}else {
+			log.info("Password no coincidente");
+			model.addAttribute("usuario", new Usuario());
+			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
+			return "login";
+			
+		}
+		
+		}catch(Exception e) {
+			log.info("El usuario no existe");
 			model.addAttribute("usuario", new Usuario());
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
 		}
+		
+			
+		
 	}
 
 	/**
