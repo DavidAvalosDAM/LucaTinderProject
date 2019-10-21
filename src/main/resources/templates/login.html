@@ -12,10 +12,10 @@
 		<form th:action="@{/}" th:object="${usuario}"
 			method="post">
 			<div>
-				Usuario: <input type="text" th:field="*{nombre}" />
+				Usuario: <input type="text" th:field="*{username}" />
 			</div>
 			<div>
-				Contraseña: <input type="text" th:field="*{contrasena}" />
+				Contraseña: <input type="text" th:field="*{password}" />
 			</div>
 			<div>
 				<p th:text="${status}"></p>
