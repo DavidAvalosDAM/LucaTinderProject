@@ -21,5 +21,6 @@ public interface UsuarioService {
 	public void guardarUsuariosAutomaticos(List<Usuario> listaUsuariosAuto);
 	
 	public void eliminarTodos();
-
+	
+	public Usuario devolverUsuarioPorUsername(String userName);
 }
