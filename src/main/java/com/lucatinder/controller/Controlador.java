@@ -150,7 +150,7 @@ public class Controlador {
 	 * @date 21/10/2019
 	 * @autor Yolanda
 	 */
-	}
+	
 
 	@PostMapping("/modificarDatos")
 	public String urlModificarUsuario(Usuario u,Model model) {
@@ -165,4 +165,3 @@ public class Controlador {
 	}
 	
 	}
-}
