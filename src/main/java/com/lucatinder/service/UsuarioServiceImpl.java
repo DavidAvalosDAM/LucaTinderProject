@@ -45,6 +45,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		return usuDao.devuelveListadoInicialSencillo(idUsuario);
 	}
+	public Usuario devolverUsuarioPorUsername(String userName) {
+		
+		return null;
+	}
 
 
 	

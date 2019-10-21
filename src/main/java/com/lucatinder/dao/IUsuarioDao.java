@@ -13,10 +13,17 @@ import com.lucatinder.model.Usuario;
  *
  */
 public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
+	/**
+	 * Esta query Personalizada nos devuelve un usuario por su userName
+	 * 
+	 * @author Jorge
+	 * @param idUsuario
+	 * @return Lista de usuarios con un algoritmo sencillo
+	 */
 	@Query(
 			  value = "SELECT * FROM usuarios WHERE nombre = ?1", 
 			  nativeQuery = true)
-			public Usuario buscaPorNombre(String nombre);
+			public Usuario buscaPorUserName(String userName);
 	/**
 	 * Esta query Personalizada nos devuelve 20 usuarios que no correspondan con la id
 	 * del usuario que se requiere por parámetro
