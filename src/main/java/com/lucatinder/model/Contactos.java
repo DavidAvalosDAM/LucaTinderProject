@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 /**
  * Creamos la clase Contactos,listado de perfiles en la que el usuario1 
  * hace un link sobre el usuario 2.
+ * Mtdo constructor, getters y setters, to string.
  * @author Yolanda
  * @version 1.0
  * @date 20/10/2019 
