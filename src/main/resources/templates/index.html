@@ -11,7 +11,8 @@
           </div> 
    		<div style= "background-color: lightcoral">
 			<ul> 
-				<li th:each="${elementoLista:$(devuelveListadoInicialSencillo)}"> 
+				<li th:each="${elementoLista:$(listaInicial)} "> 
+					<p th:text="'Nombre' + ${elementoLista.nombre}"></p>
 					<input type="button" value="Like" onClick="this.disabled='disabled'" >
 					<input type="button" value="No Like" onClick="this.disabled='disabled'" >
 				</li>

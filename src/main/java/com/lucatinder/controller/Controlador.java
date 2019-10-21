@@ -10,9 +10,14 @@ import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Usuario;
 import com.lucatinder.service.UsuarioService;
 
+
+import java.util.List;
+import com.lucatinder.dao.IUsuarioDao;
+import com.lucatinder.model.Usuario;
 @Controller
 /**
  * En esta clase se realizaran todas las operaciones de control.
+ * 
  * @author Iván
  * @version 1.0
  * @date 18/10/2019
@@ -88,18 +93,27 @@ public class Controlador {
 	 * @autor Yolanda
 	 */
 	@PostMapping("/datos")
-	public String urlMisDatos(Usuario u,Model model) {
-		
+	public String urlMisDatos(Usuario u, Model model) {
+
 		model.addAttribute("usuario", u);
-		
+
 		return "datos";
-	
-     }
+
+	}
+
 	@GetMapping("/eliminar")
-	public String urlEliminarUsuario(Usuario u,Model model) {
-		
+	public String urlEliminarUsuario(Usuario u, Model model) {
+
 		model.addAttribute("usuario", u);
-		
+
 		return "formularioAlta";
-}
+	}
+	
+	@PostMapping("/")
+	public String usuarioLista( List<Usuario> listaInicial, Model model) {
+		model.addAttribute("listaInicial", listaInicial);
+		return "index";
+
+	}
+
 }
