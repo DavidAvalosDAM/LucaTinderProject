@@ -72,6 +72,7 @@ public class Controlador {
 			model.addAttribute("usuario", new Usuario());
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
+			
 		}
 		
 		}catch(Exception e) {
