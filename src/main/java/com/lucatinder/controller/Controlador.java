@@ -95,11 +95,21 @@ public class Controlador {
 		return "datos";
 	
      }
-	@GetMapping("/eliminar")
+	@PostMapping("/eliminar")
 	public String urlEliminarUsuario(Usuario u,Model model) {
 		
+		usi.eliminarUsuario(u);
+		
+		return "login";
+		
+}
+	@PostMapping("/modificarDatos")
+	public String urlModificarUsuario(Usuario u,Model model) {
+		
+		usi.guardarUsuario(u);
+	
 		model.addAttribute("usuario", u);
 		
-		return "formularioAlta";
+		return "index";
 }
 }
