@@ -1,5 +1,7 @@
 package com.lucatinder.controller;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +15,14 @@ import com.lucatinder.service.UsuarioService;
 @Controller
 /**
  * En esta clase se realizaran todas las operaciones de control.
+ * 
  * @author Iván
  * @version 1.0
  * @date 18/10/2019
  */
 public class Controlador {
 
+	private Logger log=Logger.getLogger("Controlador: -------");
 	@Autowired
 	private IUsuarioDao dao;
 
@@ -46,18 +50,39 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @date 18/10/2019
-	 * @autor Ivan
+	 * @autor Ivan & Jorge
 	 */
 	@PostMapping("/")
 	public String urlLoginEnviado(Usuario u, Model model) {
-		if (u.getPassword().equals(dao.buscaPorNombre(u.getNombre()).getPassword())) {
-			model.addAttribute("usuario", u);
+		try {
+			log.info("Recibiendo info de usuario para login");
+			log.info(u.getUsername());
+			log.info(u.getPassword());
+			
+			Usuario usuarioComprobador=usi.devolverUsuarioPorUsername(u.getUsername());
+			log.info("Usuario encontrado:");
+			log.info(usuarioComprobador.getUsername());
+			log.info(usuarioComprobador.getPassword());
+			
+		if (u.getPassword().equals(usuarioComprobador.getPassword())) {
+			log.info("Password coincidente");
+			log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"Lo que queremos comprobar ahora debe ser 25");
+			model.addAttribute("usuario", usi.devolverUsuarioPorUsername(u.getUsername()));
+			model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
 			return "index";
-		} else {
+		}else {
+			log.info("Password no coincidente");
 			model.addAttribute("usuario", new Usuario());
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
 		}
+		
+		}catch(Exception e) {
+			log.info("El usuario no existe");
+			model.addAttribute("usuario", new Usuario());
+			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
+			return "login";
+		}	
 	}
 
 	/**
@@ -77,6 +102,8 @@ public class Controlador {
 	@PostMapping("/alta")
 	public String urlAltaRecibido(Model model, Usuario u) {
 		usi.guardarUsuario(u);
+		log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"");
+		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
 		return "index";
 	}
 
@@ -88,10 +115,8 @@ public class Controlador {
 	 * @autor Yolanda
 	 */
 	@PostMapping("/datos")
-	public String urlMisDatos(Usuario u,Model model) {
-		
+	public String urlMisDatos(Usuario u, Model model) {
 		model.addAttribute("usuario", u);
-		
 		return "datos";
 	
      }
@@ -112,4 +137,10 @@ public class Controlador {
 		
 		return "index";
 }
+	
+	@GetMapping("/contactos")
+	public String urlContactos(Model model) {
+		return "listadoContactos";
+	}
+	
 }

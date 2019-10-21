@@ -5,13 +5,35 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
 	<body>
-		<ul> 
-			<li th:each="${usuario[i.index]}"> 
-				<input type="button" value="Like" onClick="this.disabled='disabled'" >
-				<input type="button" value="No Like" onClick="this.disabled='disabled'" >
-			</li>
+          <div> 
+              <h1 style= "text-align: center">L U C A T I N D E R</h1>
+              <nav>
+                  <table>
+                    <tr> 
+                        <td>
+                            <p> 
+                                <a href="/datos" style="background-color: lightcoral"> 
+                                MI PERFIL 
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                  </table>
+              </nav>
+          </div> 
+   		<div style= "background-color: lightcoral">
+			<ul> 
+				<li th:each="elementoLista : ${listaInicial}"> 
+					<p th:text="'Usuario: ' + ${elementoLista.username}"></p>
+					<p th:text="'Nombre: ' + ${elementoLista.nombre}"></p>
+					<p th:text="'Edad:  ' + ${elementoLista.edad}"></p>
+					<p th:text="'Genero:  ' + ${elementoLista.genero}"></p>
+					<p th:text="'Descripción: ' + ${elementoLista.descripcion}"></p>
+					<input type="submit" value="Like" onClick="this.disabled='disabled'" >
+					<input type="submit" value="No Like" onClick="this.disabled='disabled'" >
+				</li>
         
-    	</ul>
+    		</ul>
+    	</div>
 	</body> 
 </html>
-
