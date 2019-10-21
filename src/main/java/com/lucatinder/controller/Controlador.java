@@ -50,7 +50,7 @@ public class Controlador {
 	 */
 	@PostMapping("/")
 	public String urlLoginEnviado(Usuario u, Model model) {
-		if (u.getPassword().equals(dao.buscaPorNombre(u.getNombre()).getPassword())) {
+		if (u.getPassword().equals(usi.devolverUsuarioPorUsername(u.getUsername()).getPassword())) {
 			model.addAttribute("usuario", u);
 			return "index";
 		} else {

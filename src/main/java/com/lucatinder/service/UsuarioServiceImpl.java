@@ -45,6 +45,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		usuDao.deleteAll();
 	}
+	@Override
+	public Usuario devolverUsuarioPorUsername(String userName) {
+		
+		return null;
+	}
 
 
 	
