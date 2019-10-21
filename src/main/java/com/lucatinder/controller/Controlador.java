@@ -108,7 +108,7 @@ public class Controlador {
 	}
 
 	/**
-	 * Método creado para mostrar en html los datos del usuario
+	 * Método creado para mostrar en el formulario los datos del usuario
 	 * 
 	 * @version 1.0
 	 * @date 20/10/2019
@@ -120,6 +120,12 @@ public class Controlador {
 		return "datos";
 	
      }
+	/**
+	 * Método creado para eliminar los datos del usuario
+	 * @version 1.0
+	 * @date 21/10/2019
+	 * @autor Yolanda
+	 */
 	@PostMapping("/eliminar")
 	public String urlEliminarUsuario(Usuario u,Model model) {
 		
@@ -128,6 +134,12 @@ public class Controlador {
 		return "login";
 		
 }
+	/**
+	 * Método creado para modificar los datos del usuario
+	 * @version 1.0
+	 * @date 21/10/2019
+	 * @autor Yolanda
+	 */
 	@PostMapping("/modificarDatos")
 	public String urlModificarUsuario(Usuario u,Model model) {
 		
