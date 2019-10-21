@@ -37,4 +37,16 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 			  nativeQuery = true)
 			public List<Usuario> devuelveListadoInicialSencillo(int idUsuario);
 
+	/**
+	 * Esta query Personalizada nos devuelve los usuarios a los que el usuario haya hecho
+	 * contacto
+	 * 
+	 * @author Jorge
+	 * @param idUsuario
+	 * @return Lista de usuarios contactados
+	 */
+	@Query(
+			  value = "SELECT id_usuario_contactado FROM contactos WHERE id_usuario_contactante = ?1", 
+			  nativeQuery = true)
+			public List<Usuario> devuelveListadoContactos(int idUsuario);
 	}

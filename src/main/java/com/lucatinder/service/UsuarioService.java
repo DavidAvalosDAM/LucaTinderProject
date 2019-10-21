@@ -23,4 +23,6 @@ public interface UsuarioService {
 	public void eliminarTodos();
 	
 	public Usuario devolverUsuarioPorUsername(String userName);
+	
+	public void modificarUsuario(Usuario u);
 }
