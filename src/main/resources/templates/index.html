@@ -39,10 +39,12 @@
 					<form action=" " th:object="${contacto}">
 						<input type="hidden" th:field="*{usuarioContactante}" value=${usuario} >
 						<input type="hidden" th:field="*{usuarioContactado}" value=${elementoLista} >
-				        <input type="submit" value="Like" onClick="this.disabled='disabled'" >   
+				        <input type="submit" value="Like" onClick="this.disabled='disabled'" > 
 				    </form>
 					
 					<form action=" " th:object="${contacto}">
+						<input type="hidden" th:field="*{usuarioContactante}" value=${usuario} >
+						<input type="hidden" th:field="*{usuarioContactado}" value=${elementoLista} >
                         <input type="submit" value="No Like" onClick="this.disabled='disabled'">  
 					</form>
 					
