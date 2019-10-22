@@ -13,6 +13,7 @@ import com.lucatinder.model.Usuario;
 import com.lucatinder.service.IContactoService;
 import com.lucatinder.service.UsuarioService;
 
+
 @Controller
 /**
  * En esta clase se realizaran todas las operaciones de control.
@@ -23,6 +24,7 @@ import com.lucatinder.service.UsuarioService;
  */
 public class Controlador {
 
+	private Usuario usuarioPadre;
 	private Logger log=Logger.getLogger("Controlador: -------");
 	@Autowired
 	private IUsuarioDao dao;
@@ -72,8 +74,9 @@ public class Controlador {
 		if (u.getPassword().equals(usuarioComprobador.getPassword())) {
 			log.info("Password coincidente");
 			log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"Lo que queremos comprobar ahora debe ser 25");
-			model.addAttribute("usuario", usi.devolverUsuarioPorUsername(u.getUsername()));
-			model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
+			usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
+			model.addAttribute("usuario", usuarioPadre);
+			model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usuarioPadre.getIdUsuario()));
 			return "index";
 		}else {
 			log.info("Password no coincidente");
@@ -108,7 +111,8 @@ public class Controlador {
 	public String urlAltaRecibido(Model model, Usuario u) {
 		usi.guardarUsuario(u);
 		log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"");
-		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
+		usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
+		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usuarioPadre.getIdUsuario()));
 		return "index";
 	}
 
