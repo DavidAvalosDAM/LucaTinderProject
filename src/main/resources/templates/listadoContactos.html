@@ -6,6 +6,7 @@
 </head>
     <body>
         <table>
+           <caption>Listado Contactos</caption>
             <tr>
                 <td th:each="elementoLista: ${listaContactos}">
                     <p th:text="'Usuario: ' + ${elementoLista.username}"></p>
