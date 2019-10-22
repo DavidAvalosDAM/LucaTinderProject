@@ -9,4 +9,5 @@ public interface IContactoService {
 
 	public List<Usuario> devuelveListaContactos(int idUsuarioContactante);
 	public void contactar(Contactos c);
+	public void detectaMatch(Contactos c);
 }

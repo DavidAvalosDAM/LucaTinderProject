@@ -21,4 +21,14 @@ public interface IContactoDao extends JpaRepository<Contactos, Integer> {
 			  value = "SELECT * FROM contactos WHERE id_usuario_contactante = ?1", 
 			  nativeQuery = true)
 			public List<Contactos> devuelveListadoContactos(int idUsuarioContactante);
+	
+	@Query(
+			  value = "SELECT * FROM contactos WHERE id_usuario_contactante = ?2 AND id_usuario_contactado = ?1", 
+			  nativeQuery = true)
+			public <Optional>Contactos detectaMatch(int idUsuarioContactante,int idUsuarioContactado);
+	
+	@Query(
+			  value = "SELECT * FROM contactos WHERE id_usuario_contactante = ?1 AND id_usuario_contactado = ?2", 
+			  nativeQuery = true)
+			public <Optional>Contactos compruebaContactoPrevio(int idUsuarioContactante,int idUsuarioContactado);
 }
