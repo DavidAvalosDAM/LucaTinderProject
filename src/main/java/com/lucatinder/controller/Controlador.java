@@ -23,13 +23,13 @@ import com.lucatinder.service.UsuarioService;
  */
 public class Controlador {
 
-	private Logger log=Logger.getLogger("Controlador: -------");
+	private Logger log = Logger.getLogger("Controlador: -------");
 	@Autowired
 	private IUsuarioDao dao;
 
 	@Autowired
 	private UsuarioService usi;
-	
+
 	@Autowired
 	private IContactoService ics;
 
@@ -42,7 +42,7 @@ public class Controlador {
 	 * @autor Ivan
 	 *
 	 */
-	
+
 	@GetMapping("/")
 	public String urlLogin(Model model) {
 		model.addAttribute("usuario", new Usuario());
@@ -63,31 +63,33 @@ public class Controlador {
 			log.info("Recibiendo info de usuario para login");
 			log.info(u.getUsername());
 			log.info(u.getPassword());
-			
-			Usuario usuarioComprobador=usi.devolverUsuarioPorUsername(u.getUsername());
+
+			Usuario usuarioComprobador = usi.devolverUsuarioPorUsername(u.getUsername());
 			log.info("Usuario encontrado:");
 			log.info(usuarioComprobador.getUsername());
 			log.info(usuarioComprobador.getPassword());
-			
-		if (u.getPassword().equals(usuarioComprobador.getPassword())) {
-			log.info("Password coincidente");
-			log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"Lo que queremos comprobar ahora debe ser 25");
-			model.addAttribute("usuario", usi.devolverUsuarioPorUsername(u.getUsername()));
-			model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
-			return "index";
-		}else {
-			log.info("Password no coincidente");
-			model.addAttribute("usuario", new Usuario());
-			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
-			return "login";
-		}
-		
-		}catch(Exception e) {
+
+			if (u.getPassword().equals(usuarioComprobador.getPassword())) {
+				log.info("Password coincidente");
+				log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()
+						+ "Lo que queremos comprobar ahora debe ser 25");
+				model.addAttribute("usuario", usi.devolverUsuarioPorUsername(u.getUsername()));
+				model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(
+						usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
+				return "index";
+			} else {
+				log.info("Password no coincidente");
+				model.addAttribute("usuario", new Usuario());
+				model.addAttribute("status", "El usuario o la contraseña son incorrectos");
+				return "login";
+			}
+
+		} catch (Exception e) {
 			log.info("El usuario no existe");
 			model.addAttribute("usuario", new Usuario());
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
-		}	
+		}
 	}
 
 	/**
@@ -107,8 +109,9 @@ public class Controlador {
 	@PostMapping("/alta")
 	public String urlAltaRecibido(Model model, Usuario u) {
 		usi.guardarUsuario(u);
-		log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"");
-		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
+		log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario() + "");
+		model.addAttribute("listaInicial",
+				usi.devuelveListadoInicialSencillo(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario()));
 		return "index";
 	}
 
@@ -124,7 +127,7 @@ public class Controlador {
 		model.addAttribute("usuario", u);
 		return "datos";
 	}
-	
+
 	/**
 	 * Método creado para mostrar los contactos a los que se le ha dado like
 	 * 
@@ -134,35 +137,39 @@ public class Controlador {
 	 */
 	@GetMapping("/contactos")
 	public String urlContactos(int idUsuarioContactante, Model model) {
-		model.addAttribute("listaContactos",ics.devuelveListaContactos(idUsuarioContactante));
+		model.addAttribute("listaContactos", ics.devuelveListaContactos(idUsuarioContactante));
 		return "listadoContactos";
 	}
-     
+
 	@PostMapping("/eliminar")
-	public String urlEliminarUsuario(Usuario u,Model model) {
+	public String urlEliminarUsuario(Usuario u, Model model) {
 		usi.eliminarUsuario(u);
 		return "login";
-		
-}
+
+	}
+
 	/**
 	 * Método creado para modificar los datos del usuario
+	 * 
 	 * @version 1.0
 	 * @date 21/10/2019
 	 * @autor Yolanda
 	 */
-	
 
 	@PostMapping("/modificarDatos")
-	public String urlModificarUsuario(Usuario u,Model model) {
+	public String urlModificarUsuario(Usuario u, Model model) {
 		usi.guardarUsuario(u);
 		model.addAttribute("usuario", u);
 		return "index";
-}
-	
+	}
+
 	@GetMapping("/contactos")
 	public String urlContactos(Model model) {
 		return "listadoContactos";
 	}
-	
-	}
 
+	@GetMapping("/descartes")
+	public String urlListadoDescartes(Model model) {
+		return "listadoDescartes";
+	}
+}
