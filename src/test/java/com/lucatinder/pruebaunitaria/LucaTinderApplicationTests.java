@@ -111,8 +111,8 @@ public class LucaTinderApplicationTests {
 	public void compruebaMatch() {
 		
 		Contactos c1=new Contactos();
-		c1.setUsuarioContactante(service.devuelveUsuarioId(20));
-		c1.setUsuarioContactado(service.devuelveUsuarioId(19));
+		c1.setUsuarioContactante(service.devuelveUsuarioId(25));
+		c1.setUsuarioContactado(service.devuelveUsuarioId(21));
 		contactoService.contactar(c1);
 		
 		Contactos c2=new Contactos();

@@ -24,11 +24,11 @@ public class Descartes {
 	@GeneratedValue
 	private int id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "idUsuarioDescartante", referencedColumnName = "idUsuario")
 	private Usuario  usuarioDescartante  ;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "idUsuarioDescartado", referencedColumnName = "idUsuario")
 	private Usuario  usuarioDescartado  ;
 

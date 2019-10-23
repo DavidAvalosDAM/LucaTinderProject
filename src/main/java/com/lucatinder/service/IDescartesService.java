@@ -21,8 +21,8 @@ import com.lucatinder.model.Usuario;
 public interface IDescartesService {
 
 	public List<Usuario> devuelveListaDescartes(int idUsuarioDescartante);
-
+	public void addDescarte(Descartes d);
 	
-	}
+}
 
 

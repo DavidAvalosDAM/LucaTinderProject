@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.lucatinder.dao.IUsuarioDao;
+import com.lucatinder.model.Contactos;
+import com.lucatinder.model.Descartes;
 import com.lucatinder.model.Usuario;
 import com.lucatinder.service.IContactoService;
+import com.lucatinder.service.IDescartesService;
 import com.lucatinder.service.UsuarioService;
 
 
@@ -26,9 +29,10 @@ public class Controlador {
 
 	private Usuario usuarioPadre;
 	private Logger log=Logger.getLogger("Controlador: -------");
+	
 	@Autowired
-	private IUsuarioDao dao;
-
+	private IDescartesService ids;
+	
 	@Autowired
 	private UsuarioService usi;
 	
@@ -65,8 +69,8 @@ public class Controlador {
 			log.info("Recibiendo info de usuario para login");
 			log.info(u.getUsername());
 			log.info(u.getPassword());
-			
-			Usuario usuarioComprobador=usi.devolverUsuarioPorUsername(u.getUsername());
+
+			Usuario usuarioComprobador = usi.devolverUsuarioPorUsername(u.getUsername());
 			log.info("Usuario encontrado:");
 			log.info(usuarioComprobador.getUsername());
 			log.info(usuarioComprobador.getPassword());
@@ -76,6 +80,9 @@ public class Controlador {
 			log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"Lo que queremos comprobar ahora debe ser 25");
 			usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
 			model.addAttribute("usuario", usuarioPadre);
+			model.addAttribute("contacto",new Contactos());
+			model.addAttribute("descarte",new Descartes());
+			model.addAttribute("usuarioVacio", new Usuario());
 			model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usuarioPadre.getIdUsuario()));
 			return "index";
 		}else {
@@ -90,7 +97,7 @@ public class Controlador {
 			model.addAttribute("usuario", new Usuario());
 			model.addAttribute("status", "El usuario o la contraseña son incorrectos");
 			return "login";
-		}	
+		}
 	}
 
 	/**
@@ -106,12 +113,26 @@ public class Controlador {
 		model.addAttribute("usuario", new Usuario());
 		return "formularioalta";
 	}
+	@GetMapping("/index")
+	public String urlIndex(Model model) {
+		model.addAttribute("usuario", usuarioPadre);
+		model.addAttribute("contacto",new Contactos());
+		model.addAttribute("usuarioVacio", new Usuario());
+		model.addAttribute("descarte",new Descartes());
+		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usuarioPadre.getIdUsuario()));
+		
+		return "index";
+	}
 
 	@PostMapping("/alta")
 	public String urlAltaRecibido(Model model, Usuario u) {
 		usi.guardarUsuario(u);
 		log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"");
 		usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
+		model.addAttribute("usuario", usuarioPadre);
+		model.addAttribute("usuarioVacio", new Usuario());
+		model.addAttribute("contacto",new Contactos());
+		model.addAttribute("descarte",new Descartes());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usuarioPadre.getIdUsuario()));
 		return "index";
 	}
@@ -124,8 +145,8 @@ public class Controlador {
 	 * @autor Yolanda
 	 */
 	@PostMapping("/datos")
-	public String urlMisDatos(Usuario u, Model model) {
-		model.addAttribute("usuario", u);
+	public String urlMisDatos(Model model) {
+		model.addAttribute("usuario", usuarioPadre);
 		return "datos";
 	}
 	
@@ -136,15 +157,56 @@ public class Controlador {
 	 * @param model
 	 * @autor David
 	 */
-	@GetMapping("/contactos")
-	public String urlContactos(int idUsuarioContactante, Model model) {
-		model.addAttribute("listaContactos",ics.devuelveListaContactos(idUsuarioContactante));
+	@GetMapping("/listadosContactos")
+	public String urlContactos(Model model) {
+		model.addAttribute("usuario", usuarioPadre);
+		model.addAttribute("listaContactos",ics.devuelveListaContactos(usuarioPadre.getIdUsuario()));
 		return "listadoContactos";
 	}
-     
+	
+	@PostMapping("/addContacto")
+	public String urlLikeContactos (Usuario u, Model model) {
+		
+		log.info(u.getUsername());
+		
+		Contactos c=new Contactos();
+		c.setUsuarioContactante(usuarioPadre);
+		c.setUsuarioContactado(usi.devolverUsuarioPorUsername(u.getUsername()));
+		
+		ics.contactar(c);
+		
+		/*log.info("Recibiendo contacto");
+		log.info(c.getUsuarioContactante().getUsername()+" -- "+ c.getUsuarioContactado().getUsername() );
+		ics.contactar(c);*/
+		model.addAttribute("contacto",new Contactos() );
+		model.addAttribute("usuario", usuarioPadre);
+		model.addAttribute("descarte",new Descartes());
+		model.addAttribute("usuarioVacio", new Usuario());
+		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usuarioPadre.getIdUsuario()));
+		return "index";
+	}
+	@PostMapping("/addDescarte")
+	public String urlDescartaContactos (Usuario u, Model model) {
+		
+		Descartes d=new Descartes();
+		d.setUsuarioDescartante(usuarioPadre);
+		d.setUsuarioDescartado(usi.devolverUsuarioPorUsername(u.getUsername()));
+		
+		log.info("Usuario descartado: "+d.getUsuarioDescartado().getUsername());
+		ids.addDescarte(d);
+		model.addAttribute("contacto",new Contactos());
+		model.addAttribute("descarte",new Descartes());
+		model.addAttribute("usuario", usuarioPadre);
+		model.addAttribute("usuarioVacio", new Usuario());
+		model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usuarioPadre.getIdUsuario()));
+		return "index";
+	}
+
 	@PostMapping("/eliminar")
-	public String urlEliminarUsuario(Usuario u,Model model) {
-		usi.eliminarUsuario(u);
+	public String urlEliminarUsuario(Model model) {
+
+		usi.eliminarUsuario(usuarioPadre);
+
 		return "login";
 		
 }
@@ -157,16 +219,14 @@ public class Controlador {
 	
 
 	@PostMapping("/modificarDatos")
-	public String urlModificarUsuario(Usuario u,Model model) {
-		usi.guardarUsuario(u);
-		model.addAttribute("usuario", u);
-		return "index";
-}
-	/*
-	@GetMapping("/contactos")
-	public String urlContactos(Model model) {
-		return "listadoContactos";
-	}*/
-	
-	}
+	public String urlModificarUsuario(Usuario u, Model model) {
 
+		usi.guardarUsuario(u);
+
+		model.addAttribute("usuario", u);
+
+		return "index";
+	}
+	
+	
+}
