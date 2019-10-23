@@ -142,7 +142,7 @@ public class ControladorRest {
 	/**
 	 * @author Iván
 	 * @version 1.0
-	 * @date 22/10/2019
+	 * @date 23/10/2019
 	 */
 	@PostMapping("/restContactar")
 	public void contactar(@RequestBody Usuario u){
@@ -156,7 +156,7 @@ public class ControladorRest {
 	/**
 	 * @author Iván
 	 * @version 1.0
-	 * @date 22/10/2019
+	 * @date 23/10/2019
 	 */
 	@PostMapping("/restDescartar")
 	public void descartar(@RequestBody Usuario u){
