@@ -3,9 +3,47 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
 	<body>
-		<h1>Datos Usuario</h1>
+		 <div> 
+              <h1 style= "text-align: center">L U C A T I N D E R</h1>
+              <nav>
+                  <table>
+                    <tr> 
+                        <td>
+                            <p> 
+                                <a th:href="@{/datos}" style="background-color: lightcoral"> 
+                               		MI PERFIL 
+                                </a>
+                            </p>
+                        </td>
+                        <td>
+                            <p> 
+                                <a th:href="@{/listadoContactos}" style="background-color: lightcoral"> 
+                                	MIS CONTACTADOS
+                                </a>
+                            </p>
+                        </td>
+                        <td>
+                            <p> 
+                                <a th:href="@{/listadoDescartes}" style="background-color: lightcoral"> 
+                                	MIS DESCARTES
+                                </a>
+                            </p>
+                        </td>
+                         <td>
+                            <p> 
+                                <a th:href="@{/listadoMatches}" style="background-color: lightcoral"> 
+                                	MIS MATCHES
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                  </table>
+              </nav>
+              
+          	</div> 
+			<h2>Datos Usuario</h2>
 		        
-			<form action="#" th:action="@{/datos}" th:object="${usuario}" method="post">
+			<form th:action="@{/datos}" th:object="${usuario}" method="post">
 			    
 			<div>
 				Username: <input type="text" name="username" th:value= "${usuario.username}" required ></p>

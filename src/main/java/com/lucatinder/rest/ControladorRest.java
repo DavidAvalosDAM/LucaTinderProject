@@ -3,9 +3,9 @@ package com.lucatinder.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucatinder.model.Contactos;
@@ -17,7 +17,7 @@ import com.lucatinder.service.MatchesService;
 import com.lucatinder.service.UsuarioService;
 
 @RestController
-
+@CrossOrigin
 public class ControladorRest {
 	
 	private Usuario usuarioPadre;
@@ -40,7 +40,7 @@ public class ControladorRest {
 	 * @date 22/10/2019
 	 */
 	@PostMapping("/restAlta")
-	public void altaUsuario(@RequestBody Usuario usuario){
+	public void altaUsuario(Usuario usuario){
 		usu.guardarUsuario(usuario);
 	
 	}
@@ -52,7 +52,7 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	@PostMapping("/restBaja")
-	public void bajaUsuario(@RequestBody Usuario usuario) {
+	public void bajaUsuario(Usuario usuario) {
 		usu.eliminarUsuario(usuario);
 	}
 	
@@ -63,7 +63,7 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	@PostMapping("/restModificar")
-	public void modificarUsuario(@RequestBody Usuario usuario) {
+	public void modificarUsuario(Usuario usuario) {
 		usu.modificarUsuario(usuario);
 	}
 	
@@ -89,7 +89,7 @@ public class ControladorRest {
 	/*@GetMapping("/restListadoInicial")
 	public List<Usuario> devuelveListadoInicialSencillo(@RequestBody int idUsuario) {
 		return usu.devuelveListadoInicialSencillo(idUsuario);
-	}*/
+	}
 	
 	/**
 	 * Este método recibe un usuario JSON y devuelve el id de usuario de la BBDD.
