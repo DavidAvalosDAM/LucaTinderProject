@@ -7,14 +7,14 @@
     <body>
         <table>
             <tr>
-                <td th:each="elementoLista: ${listaContactos}">
-                    <p th:text="'Usuario: ' + ${elementoLista.username}"></p>
-                    <p th:text="'Nombre: ' + ${elementoLista.nombre}"></p>
-					<p th:text="'Edad:  ' + ${elementoLista.edad}"></p>
-					<p th:text="'Genero:  ' + ${elementoLista.genero}"></p>
-					<p th:text="'Descripción: ' + ${elementoLista.descripcion}"></p>
+                <td th:each="descartes: ${listadoDescartes}">
+                    <p th:text="'Usuario: ' + ${descartes.username}"></p>
+                    <p th:text="'Nombre: ' + ${descartes.nombre}"></p>
+					<p th:text="'Edad:  ' + ${descartes.edad}"></p>
+					<p th:text="'Genero:  ' + ${descartes.genero}"></p>
+					<p th:text="'Descripción: ' + ${descartes.descripcion}"></p>
                 </td>
             </tr>
         </table>
     </body>
-</html>
+</html>º
