@@ -27,4 +27,6 @@ public interface UsuarioService {
 	public void modificarUsuario(Usuario u);
 	
 	public Usuario devuelveUsuarioId(int id);
+	
+	public List<Usuario> devuelveListadoInicialComplejo(int idUsuario);
 }

@@ -37,4 +37,19 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 			  nativeQuery = true)
 			public List<Usuario> devuelveListadoInicialSencillo(int idUsuario);
 
+	
+	/**
+	 * Esta query Personalizada nos devuelve 20 usuarios que no correspondan con la id
+	 * del usuario que se requiere por parámetro
+	 * 
+	 * @author Jorge
+	 * @param idUsuario
+	 * @return Lista de usuarios con un algoritmo sencillo
+	 */
+	@Query(
+			  value = "SELECT * FROM usuario WHERE id_usuario <> ?1 ?2 LIMIT 20", 
+			  nativeQuery = true)
+			public List<Usuario> devuelveListadoInicialComplejo(int idUsuario, String autoConstruida);
+	
 	}
+
