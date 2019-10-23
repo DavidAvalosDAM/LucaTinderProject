@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucatinder.model.Contactos;
@@ -97,7 +98,7 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@GetMapping("/restDevuelveUsuarioUserName")
+	@GetMapping("/restDevuelveUsuarioId")
 	public Usuario devuelveUsuarioPorId(@RequestBody int id) {
 		return usu.devuelveUsuarioId(id);
 		
