@@ -3,16 +3,16 @@ package com.lucatinder.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucatinder.model.Usuario;
 import com.lucatinder.service.UsuarioService;
 
 @RestController
-
+@CrossOrigin
 public class ControladorRest {
 	
 	@Autowired
@@ -25,7 +25,7 @@ public class ControladorRest {
 	 * @date 22/10/2019
 	 */
 	@PostMapping("/restAlta")
-	public void altaUsuario(@RequestBody Usuario usuario){
+	public void altaUsuario(Usuario usuario){
 		usu.guardarUsuario(usuario);
 	
 	}
@@ -37,7 +37,7 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	@PostMapping("/restBaja")
-	public void bajaUsuario(@RequestBody Usuario usuario) {
+	public void bajaUsuario(Usuario usuario) {
 		usu.eliminarUsuario(usuario);
 	}
 	
@@ -48,7 +48,7 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	@PostMapping("/restModificar")
-	public void modificarUsuario(@RequestBody Usuario usuario) {
+	public void modificarUsuario(Usuario usuario) {
 		usu.modificarUsuario(usuario);
 	}
 	
@@ -59,7 +59,7 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	@PostMapping("/restDevuelveUsuarioUserName")
-	public Usuario devuelveUsuarioPorUsername(@RequestBody String userName) {
+	public Usuario devuelveUsuarioPorUsername(String userName) {
 		return usu.devolverUsuarioPorUsername(userName);
 		
 	}
@@ -71,10 +71,10 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	
-	/*@PostMapping("/restListadoInicial")
-	public List<Usuario> devuelveListadoInicialSencillo(@RequestBody int idUsuario) {
+	@PostMapping("/restListadoInicial")
+	public List<Usuario> devuelveListadoInicialSencillo(int idUsuario) {
 		return usu.devuelveListadoInicialSencillo(idUsuario);
-	}*/
+	}
 	
 	/**
 	 * Este método recibe un usuario JSON y devuelve el id de usuario de la BBDD.
@@ -82,8 +82,8 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@PostMapping("/restDevuelveUsuarioUserName")
-	public Usuario devuelveUsuarioPorId(@RequestBody int id) {
+	@GetMapping("/restDevuelveUsuarioUserName")
+	public Usuario devuelveUsuarioPorId(int id) {
 		return usu.devuelveUsuarioId(id);
 		
 	}

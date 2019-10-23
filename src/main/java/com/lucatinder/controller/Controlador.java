@@ -85,7 +85,6 @@ public class Controlador {
 			model.addAttribute("usuario", usuarioPadre);
 			
 			model.addAttribute("usuarioVacio", new Usuario());
-			//model.addAttribute("listaInicial", usi.devuelveListadoInicialSencillo(usuarioPadre.getIdUsuario()));
 			model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
 			return "index";
 		}else {
@@ -132,24 +131,11 @@ public class Controlador {
 		usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("usuarioVacio", new Usuario());
-		model.addAttribute("contacto",new Contactos());
-		model.addAttribute("descarte",new Descartes());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
 		return "index";
 	}
 
-	/**
-	 * Método creado para mostrar en el formulario los datos del usuario
-	 * 
-	 * @version 1.0
-	 * @date 20/10/2019
-	 * @autor Yolanda
-	 */
-	@PostMapping("/datos")
-	public String urlMisDatos(Model model) {
-		model.addAttribute("usuario", usuarioPadre);
-		return "datos";
-	}
+	
 
 	/**
 	 * Método creado para mostrar los contactos a los que se le ha dado like
@@ -208,15 +194,26 @@ public class Controlador {
 		
 		log.info("Usuario descartado: "+d.getUsuarioDescartado().getUsername());
 		ids.addDescarte(d);
-		model.addAttribute("contacto",new Contactos());
-		model.addAttribute("descarte",new Descartes());
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("usuarioVacio", new Usuario());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
 		return "index";
 	}
 
-	@PostMapping("/eliminar")
+	/**
+	 * Método creado para mostrar en el formulario los datos del usuario
+	 * 
+	 * @version 1.0
+	 * @date 20/10/2019
+	 * @autor Yolanda
+	 */
+	@GetMapping("/datos")
+	public String urlMisDatos(Model model) {
+		model.addAttribute("usuario", usuarioPadre);
+		return "datos";
+	}
+
+	@GetMapping("/eliminar")
 	public String urlEliminarUsuario(Model model) {
 
 		usi.eliminarUsuario(usuarioPadre);
@@ -224,7 +221,6 @@ public class Controlador {
 		return "login";
 
 	}
-
 	/**
 	 * Método creado para modificar los datos del usuario
 	 * 
@@ -232,13 +228,14 @@ public class Controlador {
 	 * @date 21/10/2019
 	 * @autor Yolanda
 	 */
-
 	@PostMapping("/modificarDatos")
 	public String urlModificarUsuario(Usuario u, Model model) {
 		usi.guardarUsuario(u);
-
-		model.addAttribute("usuario", u);
-
+		
+		usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
+		model.addAttribute("usuario", usuarioPadre);
+		model.addAttribute("usuarioVacio", new Usuario());
+		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
 		return "index";
 	}
 
