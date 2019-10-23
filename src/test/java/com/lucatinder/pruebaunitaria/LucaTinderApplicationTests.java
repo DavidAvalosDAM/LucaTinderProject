@@ -116,18 +116,18 @@ public class LucaTinderApplicationTests {
 		contactoService.contactar(c1);
 		
 		Contactos c2=new Contactos();
-		c2.setUsuarioContactante(service.devuelveUsuarioId(17));
-		c2.setUsuarioContactado(service.devuelveUsuarioId(21));
+		c2.setUsuarioContactante(service.devuelveUsuarioId(15));
+		c2.setUsuarioContactado(service.devuelveUsuarioId(17));
 		contactoService.contactar(c2);
 		
 		Contactos c3=new Contactos();
-		c3.setUsuarioContactante(service.devuelveUsuarioId(17));
-		c3.setUsuarioContactado(service.devuelveUsuarioId(21));
+		c3.setUsuarioContactante(service.devuelveUsuarioId(19));
+		c3.setUsuarioContactado(service.devuelveUsuarioId(20));
 		contactoService.contactar(c3);
-		
+		/*
 		Contactos c4=new Contactos();
 		c4.setUsuarioContactante(service.devuelveUsuarioId(19));
 		c4.setUsuarioContactado(service.devuelveUsuarioId(20));
-		contactoService.contactar(c4);
+		contactoService.contactar(c4);*/
 	}
 }

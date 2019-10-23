@@ -21,6 +21,13 @@ public interface IMatchDao extends JpaRepository<Match, Integer> {
 			  value = "SELECT * FROM matches WHERE id_solicitante = ?1 or id_receptor = ?1", 
 			  nativeQuery = true)
 			public List<Match> devuelveListadoMatches(int idUsuarioSolicitante);
+	/**
+	 * Esta query Personalizada nos devuelve los posibles matches de un contacto previo
+	 * 
+	 * @author Jorge
+	 * @param idUsuarioSolicitante, idUsuarioReceptor
+	 * @return <Optional>Match
+	 */
 	@Query(
 			  value = "SELECT * FROM matches WHERE id_solicitante = ?1 AND id_receptor = ?2 OR id_solicitante = ?2 AND id_receptor=?1", 
 			  nativeQuery = true)

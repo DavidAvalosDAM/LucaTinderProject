@@ -1,5 +1,6 @@
 package com.lucatinder.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
 	private IUsuarioDao usuDao;
+	
+	@Autowired
+	private IContactoService ics;
+	
+	@Autowired
+	private IDescartesService ids;
+	
+	@Autowired
+	private IMatchesService ims;
 	
 	public void guardarUsuario(Usuario u) {
 		usuDao.save(u);
@@ -60,11 +70,27 @@ public class UsuarioServiceImpl implements UsuarioService {
 		Optional<Usuario> u=usuDao.findById(id);
 		return u.get();
 	}
+	@Override
+	public List<Usuario> devuelveListadoInicialComplejo(int idUsuario) {
+		StringBuilder sb=new StringBuilder("");
+				
+		for(Usuario u:ics.devuelveListaContactos(idUsuario)) {
+			sb.append(" AND id_usuario <> "+u.getIdUsuario());
+		}
+		for(Usuario u:ids.devuelveListaDescartes(idUsuario)) {
+			sb.append(" AND id_usuario <> "+u.getIdUsuario());
+		}
+		for(Usuario u:ims.devuelveMatches(idUsuario)) {
+			sb.append(" AND id_usuario <> "+u.getIdUsuario());
+		}
+			
+		return usuDao.devuelveListadoInicialComplejo(idUsuario, sb.toString());
+	}
 
 
 	
 		
-	}
+}
 	
 	
 	
