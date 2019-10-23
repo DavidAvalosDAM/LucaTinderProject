@@ -12,21 +12,36 @@
                     <tr> 
                         <td>
                             <p> 
-                                <a href="/datos" style="background-color: lightcoral"> 
-                                MI PERFIL 
+                                <a th:href="@{/datos}" style="background-color: lightcoral"> 
+                               		MI PERFIL 
                                 </a>
                             </p>
                         </td>
                         <td>
                             <p> 
-                                <a href="/listadosContactos" style="background-color: lightcoral"> 
-                                MIS CONTACTADOS
+                                <a th:href="@{/listadoContactos}" style="background-color: lightcoral"> 
+                                	MIS CONTACTADOS
+                                </a>
+                            </p>
+                        </td>
+                        <td>
+                            <p> 
+                                <a th:href="@{/listadoDescartes}" style="background-color: lightcoral"> 
+                                	MIS DESCARTES
+                                </a>
+                            </p>
+                        </td>
+                         <td>
+                            <p> 
+                                <a th:href="@{/listadoMatches}" style="background-color: lightcoral"> 
+                                	MIS MATCHES
                                 </a>
                             </p>
                         </td>
                     </tr>
                   </table>
               </nav>
+              
           </div> 
    		<div style= "background-color: lightcoral">
 			<ul> 
@@ -36,15 +51,18 @@
 					<p th:text="'Edad:  ' + ${elementoLista.edad}"></p>
 					<p th:text="'Genero:  ' + ${elementoLista.genero}"></p>
 					<p th:text="'Descripción: ' + ${elementoLista.descripcion}"></p>
-					<form action=" " th:object="${contacto}">
-						<input type="hidden" th:field="*{usuarioContactante}" value=${usuario} >
-						<input type="hidden" th:field="*{usuarioContactado}" value=${elementoLista} >
-				        <input type="submit" value="Like" onClick="this.disabled='disabled'" >   
+					<div>
+					<form th:action="@{/addContacto}" th:object="${usuarioVacio}" method="post">
+						<input type="hidden" th:value="${elementoLista.username}" name="username" />
+				        <input type="submit" value="Like"/>
 				    </form>
-					
-					<form action=" " th:object="${contacto}">
-                        <input type="submit" value="No Like" onClick="this.disabled='disabled'">  
+					</div>
+					<div>
+					<form th:action="@{/addDescarte}" th:object="${usuarioVacio}"  method="post">
+						<input type="hidden" th:value="${elementoLista.username}"name="username"/>
+                        <input type="submit" value="No Like"/>  
 					</form>
+					</div>
 					
 				</li>
         

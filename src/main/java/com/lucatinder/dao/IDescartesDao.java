@@ -20,7 +20,7 @@ public interface IDescartesDao extends JpaRepository<Descartes, Integer>  {
 	 * @date 21/10/2019
 	 */
 	@Query(
-			  value = "SELECT * FROM decartes WHERE id_usuario_descartante = ?1 ", 
+			  value = "SELECT * FROM descartes WHERE id_usuario_descartante = ?1 ", 
 			  nativeQuery = true)
 			public List<Descartes> devuelveDescartes (int idUsuarioDescartante);
 
