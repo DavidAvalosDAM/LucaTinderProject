@@ -51,5 +51,5 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 			  nativeQuery = true)
 			public List<Usuario> devuelveListadoInicialComplejo(int idUsuario, String autoConstruida);
 	
-	}
-
+	
+}
