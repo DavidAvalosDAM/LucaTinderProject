@@ -1,20 +1,59 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Listado Contactos</title>
+<meta charset="UTF-8">
+<title>Listado Contactos</title>
 </head>
-    <body>
-        <table>
-            <tr>
-                <td th:each="elementoLista: ${listaContactos}">
-                    <p th:text="'Usuario: ' + ${elementoLista.username}"></p>
-                    <p th:text="'Nombre: ' + ${elementoLista.nombre}"></p>
+<body>
+	<div>
+		<h1 style="text-align: center">L U C A T I N D E R</h1>
+		<nav>
+			<table>
+				<tr>
+				<td>
+						<p>
+							<a th:href="@{/index}" style="background-color: lightcoral">
+								INICIO </a>
+						</p>
+					</td>
+					<td>
+						<p>
+							<a th:href="@{/datos}" style="background-color: lightcoral"> MI
+								PERFIL </a>
+						</p>
+					</td>
+					<td>
+						<p>
+							<a th:href="@{/listadosContactos}"
+								style="background-color: lightcoral"> MIS CONTACTADOS </a>
+						</p>
+					</td>
+					<td>
+						<p>
+							<a th:href="@{/listadoDescartes}"
+								style="background-color: lightcoral"> MIS DESCARTES </a>
+						</p>
+					</td>
+					<td>
+						<p>
+							<a th:href="@{/listadoMatches}"
+								style="background-color: lightcoral"> MIS MATCHES </a>
+						</p>
+					</td>
+				</tr>
+			</table>
+		</nav>
+	</div>
+	<div style= "background-color: lightcoral">
+			<ul>
+				<li th:each="elementoLista: ${listaContactos}">
+					<p th:text="'Usuario: ' + ${elementoLista.username}"></p>
+					<p th:text="'Nombre: ' + ${elementoLista.nombre}"></p>
 					<p th:text="'Edad:  ' + ${elementoLista.edad}"></p>
 					<p th:text="'Genero:  ' + ${elementoLista.genero}"></p>
 					<p th:text="'Descripción: ' + ${elementoLista.descripcion}"></p>
-                </td>
-            </tr>
-        </table>
-    </body>
+				</li>
+			</ul>
+	</div>
+</body>
 </html>

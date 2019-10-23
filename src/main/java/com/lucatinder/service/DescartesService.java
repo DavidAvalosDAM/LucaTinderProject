@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lucatinder.dao.IDescartesDao;
-import com.lucatinder.model.Contactos;
 import com.lucatinder.model.Descartes;
 import com.lucatinder.model.Usuario;
 /**
@@ -16,7 +16,7 @@ import com.lucatinder.model.Usuario;
  * @date 21/10/2019
  * @autor Yolanda
  **/
-
+@Service
 public class DescartesService implements IDescartesService {
 
 	@Autowired
@@ -34,5 +34,11 @@ public class DescartesService implements IDescartesService {
 		}
 		return listaUsuarios;
 
+	}
+
+	@Override
+	public void addDescarte(Descartes d) {
+		descartesDao.save(d);
+		
 	}
 }
