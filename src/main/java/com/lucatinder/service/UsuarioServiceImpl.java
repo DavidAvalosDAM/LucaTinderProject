@@ -92,7 +92,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 		log.info("Añadidos perfiles falsos correctamente");
 		
 		
-		
 		for(Usuario us:listaUsuariosCompleja) {
 			if(Math.random()<0.2) {
 				Contactos contacto=new Contactos();
