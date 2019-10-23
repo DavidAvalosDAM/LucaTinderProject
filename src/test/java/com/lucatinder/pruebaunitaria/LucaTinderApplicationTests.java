@@ -106,7 +106,7 @@ public class LucaTinderApplicationTests {
 		
 		assertTrue(contactos.get(0)!=null);
 	}
-	
+	/*
 	@Test
 	public void compruebaMatch() {
 		
@@ -128,6 +128,7 @@ public class LucaTinderApplicationTests {
 		Contactos c4=new Contactos();
 		c4.setUsuarioContactante(service.devuelveUsuarioId(19));
 		c4.setUsuarioContactado(service.devuelveUsuarioId(20));
-		contactoService.contactar(c4);*/
-	}
+		contactoService.contactar(c4);
+	}*/
+	
 }

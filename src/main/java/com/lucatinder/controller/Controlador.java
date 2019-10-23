@@ -35,7 +35,7 @@ public class Controlador {
 	
 	@Autowired
 	private UsuarioService usi;
-	
+
 	@Autowired
 	private IContactoService ics;
 	
@@ -51,7 +51,7 @@ public class Controlador {
 	 * @autor Ivan
 	 *
 	 */
-	
+
 	@GetMapping("/")
 	public String urlLogin(Model model) {
 		model.addAttribute("usuario", new Usuario());
@@ -150,7 +150,7 @@ public class Controlador {
 		model.addAttribute("usuario", usuarioPadre);
 		return "datos";
 	}
-	
+
 	/**
 	 * Método creado para mostrar los contactos a los que se le ha dado like
 	 * 
@@ -222,25 +222,28 @@ public class Controlador {
 		usi.eliminarUsuario(usuarioPadre);
 
 		return "login";
-		
-}
+
+	}
+
 	/**
 	 * Método creado para modificar los datos del usuario
+	 * 
 	 * @version 1.0
 	 * @date 21/10/2019
 	 * @autor Yolanda
 	 */
-	
 
 	@PostMapping("/modificarDatos")
 	public String urlModificarUsuario(Usuario u, Model model) {
-
 		usi.guardarUsuario(u);
 
 		model.addAttribute("usuario", u);
 
 		return "index";
 	}
-	
-	
+
+	@GetMapping("/descartes")
+	public String urlListadoDescartes(Model model) {
+		return "listadoDescartes";
+	}
 }
