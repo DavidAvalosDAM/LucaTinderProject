@@ -1,4 +1,4 @@
-package com.lucatinder.util;
+package com.lucatinder.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -44,7 +44,7 @@ public class Controlador {
 
 	/**
 	 *
-	 * Método para entrar en login.
+	 * Método para entrar al login.
 	 * 
 	 * @version 1.0
 	 * @date 18/10/2019
@@ -140,7 +140,7 @@ public class Controlador {
 	
 
 	/**
-	 * Método creado para mostrar los contactos a los que se le ha dado like
+	 * Método creado para mostrar los contactos a los que se les da like
 	 * 
 	 * @version 1.0
 	 * @param model
@@ -153,6 +153,13 @@ public class Controlador {
 		return "listadoContactos";
 	}
 	
+	/**
+	 * Método creado para mostrar los contactos a los que se les da dilike
+	 * 
+	 * @version 1.0
+	 * @param model
+	 * @autor David
+	 */
 	@GetMapping("/listadoDescartes")
 	public String urlDescartes(Model model) {
 		model.addAttribute("usuario", usuarioPadre);

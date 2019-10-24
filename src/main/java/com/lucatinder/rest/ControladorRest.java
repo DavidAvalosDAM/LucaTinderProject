@@ -40,7 +40,12 @@ public class ControladorRest {
 	@Autowired
 	private IUsuarioDao usuDao;
 	
-	
+	/**
+	 * Este método recibe un usuario JSON, lo comprueba, junto con la contraseña y lo guarda en la BBDD.
+	 * @author Jorge
+	 * @version 1.0
+	 * @date 24/10/2019
+	 */
 	@PostMapping("/restLogin")//FUNCIONA
 	public Usuario urlLoginEnviado(@RequestBody Usuario u) {
 		try {
@@ -186,6 +191,7 @@ public class ControladorRest {
 	}
 	
 	/**
+	 * Este método recibe un usuario y recibe un Contacto para generar un Contactado.
 	 * @author Iván
 	 * @version 1.0
 	 * @date 23/10/2019
