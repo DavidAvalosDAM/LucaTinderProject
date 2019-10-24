@@ -1,78 +1,77 @@
 <head>
-		<title>Alta Usuario</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	</head>
-	<body>
-		 <div> 
-              <h1 style= "text-align: center">L U C A T I N D E R</h1>
-              <nav>
-                  <table>
-                    <tr> 
-                        <td>
-                            <p> 
-                                <a th:href="@{/datos}" style="background-color: lightcoral"> 
-                               		MI PERFIL 
-                                </a>
-                            </p>
-                        </td>
-                        <td>
-                            <p> 
-                                <a th:href="@{/listadoContactos}" style="background-color: lightcoral"> 
-                                	MIS CONTACTADOS
-                                </a>
-                            </p>
-                        </td>
-                        <td>
-                            <p> 
-                                <a th:href="@{/listadoDescartes}" style="background-color: lightcoral"> 
-                                	MIS DESCARTES
-                                </a>
-                            </p>
-                        </td>
-                         <td>
-                            <p> 
-                                <a th:href="@{/listadoMatches}" style="background-color: lightcoral"> 
-                                	MIS MATCHES
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                  </table>
-              </nav>
-              
-          	</div> 
-			<h2>Datos Usuario</h2>
-		        
-			<form th:action="@{/modificarDatos}" th:object="${usuarioVacio}" method="post">
-				
-				    <input type="hidden" th:value="${usuario.idUsuario}" name="idUsuario" />
-				<div>
-					Username: <input type="text" th:value= "${usuario.username}" name="username" required ></p>
-				</div>
-				<div>
-					Password: <input type="password"  th:value= "${usuario.password}" name="password" minlength=6 maxlength=12 required ></p>
-				</div>
-				<div>
-					<p>Nombre: <input type="text" th:value= "${usuario.nombre}" name="nombre" required></p>
-				</div>
-				<div>
-					Género(M/F): <input type="text" th:value = "${usuario.genero}" name="genero" pattern="M|F" required></p>
-				</div>
-				<div>
-					Edad: <input type="number" th:value = "${usuario.edad}" name="edad" min=18 max=90 required ></p>
-				</div>
-					Descripcion: <input type="text" th:value= "${usuario.descripcion}" name="descripcion" style="HEIGHT:60px;WIDTH:120px" ></p>
-				<div>
-				
-				<button type="submit">Modificar Usuario</button>
-				</div>
-		    </form>
-		    
-		    <div>
-		    <form th:action="@{/eliminar}" method="get">
-		    	<button type="submit">Eliminar Usuario</button>
-		    </form>
-			</div>
+<title>Alta Usuario</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{../../css/bootstrap.css}" />
+</head>
+<body
+	th:style="'background: url(/img/background.jpg) no-repeat center center fixed;'">
 
-</body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" style="margin-left: 2%" href="#"><h1>LucaTinder</h1></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="true" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse collapse justify-content-end"
+			id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+
+				<li class="nav-item"><a class="nav-link" th:href="@{/datos}">Perfil</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/listadoContactos}">Contactos</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/listadoDescartes}">Descartes</a>
+
+
+
+					<li class="nav-item"><a class="nav-link"
+					th:href="@{/listadoMatches}">Matches</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/logOut}">LogOut</a></li>
+			</ul>
+		</div>
+	</nav>
+<form th:action="@{/alta}" th:object="${usuario}" method="post">
+						<div class="form-group" align="center"
+							style="padding-top:3%; text-align:center">
+			<div style="padding:1%">
+				<h3>Username: <input type="text" th:field="*{username}"
+										required />
+								</h3>
+			</div>
+			<div style="padding:1%">
+				<h3>Password: <input type="password" th:field="*{password}"
+										minlength=6 maxlength=12 required />
+								</h3>
+			</div>
+			<div style="padding:1%">
+				<h3>Nombre: <input type="text" th:field="*{nombre}" required />
+								</h3>
+			</div>
+			
+			<div style="padding:1%">
+				<h3>Género(M/F): <input type="text" th:field="*{genero}"
+										pattern="M|F" required />
+								</h3>
+			</div>
+			<div style="padding:1%">
+				<h3 style="margin-right:5rem">Edad: <input
+										style="margin-left:2rem" type="number" th:field="*{edad}"
+										min=18 max=90 required />
+								</h3>
+			</div>
+				<h4>Descripcion:</h4> <textarea
+								style="HEIGHT:8rem;WIDTH:30rem;text-align:top"
+								th:field="*{descripcion}"></textarea>		
+			<div style="padding:1%">
+				<button class="btn btn-success" style="margin-right:2rem"
+									type="submit">Aceptar</button> <button class="btn btn-danger"
+									type="reset">Reset </button>
+			</div>
+			</div>
+		</form>
+	
+				</body> 
 </html>

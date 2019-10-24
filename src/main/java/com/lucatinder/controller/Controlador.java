@@ -55,7 +55,7 @@ public class Controlador {
 	@GetMapping("/")
 	public String urlLogin(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		model.addAttribute("status", "");
+		model.addAttribute("status", "Donde ligan los que no ligan");
 		return "login";
 	}
 
@@ -121,7 +121,7 @@ public class Controlador {
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("usuarioVacio", new Usuario());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
-		model.addAttribute("status",usuarioPadre.getNombre()+", estas personas esperan conocerte");
+		model.addAttribute("status",usuarioPadre.getNombre()+",deprisa, estas personas esperan conocerte");
 		return "index";
 	}
 
@@ -150,6 +150,7 @@ public class Controlador {
 	public String urlContactos(Model model) {
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("listaContactos",ics.devuelveListaContactos(usuarioPadre.getIdUsuario()));
+		model.addAttribute("status","Aquí están tus posibles futuras conquistas");
 		return "listadoContactos";
 	}
 	
@@ -157,12 +158,14 @@ public class Controlador {
 	public String urlDescartes(Model model) {
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("listaContactos",ids.devuelveListaDescartes(usuarioPadre.getIdUsuario()));
+		model.addAttribute("status","Ten más cuidado, estas personas no podrán ser tus conquistas");
 		return "listadoDescartes";
 	}
 	@GetMapping("/listadoMatches")
 	public String urlMatches(Model model) {
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("listaContactos",ims.devuelveMatches(usuarioPadre.getIdUsuario()));
+		model.addAttribute("status","Parece que has coincidido con ell@s, lánzate");
 		return "listadoMatches";
 	}
 	
@@ -214,6 +217,7 @@ public class Controlador {
 	@GetMapping("/datos")
 	public String urlMisDatos(Model model) {
 		model.addAttribute("usuario", usuarioPadre);
+		model.addAttribute("status","Tus datos "+usuarioPadre.getNombre()+", modifica lo que gustes");
 		return "datos";
 	}
 
@@ -246,5 +250,13 @@ public class Controlador {
 		model.addAttribute("status","Has modificado correctamente tus datos,"+u.getUsername());
 		return "index";
 	}
+	
+	@GetMapping("/logOut")
+	public String urlLogout(Model model) {
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("status", "Hasta Pronto "+usuarioPadre.getNombre());
+		return "login";
+	}
+	
 
 }

@@ -93,7 +93,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		
 		for(Usuario us:listaUsuariosCompleja) {
-			if(Math.random()<0.2) {
+			if(Math.random()<0.05) {
 				Contactos contacto=new Contactos();
 				contacto.setUsuarioContactado(u);
 				contacto.setUsuarioContactante(us);

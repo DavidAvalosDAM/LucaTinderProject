@@ -1,60 +1,72 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Mis Descartes</title>
+<title>Index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{../../css/bootstrap.css}" />
 </head>
-    <body>
-        <div>
-		<h1 style="text-align: center">L U C A T I N D E R</h1>
-		<nav>
-			<table>
-				<tr>
-				<td>
-						<p>
-							<a th:href="@{/index}" style="background-color: lightcoral">
-								INICIO </a>
-						</p>
-					</td>
-					<td>
-						<p>
-							<a th:href="@{/datos}" style="background-color: lightcoral"> MI
-								PERFIL </a>
-						</p>
-					</td>
-					<td>
-						<p>
-							<a th:href="@{/listadoContactos}"
-								style="background-color: lightcoral"> MIS CONTACTADOS </a>
-						</p>
-					</td>
-					<td>
-						<p>
-							<a th:href="@{/listadoDescartes}"
-								style="background-color: lightcoral"> MIS DESCARTES </a>
-						</p>
-					</td>
-					<td>
-						<p>
-							<a th:href="@{/listadoMatches}"
-								style="background-color: lightcoral"> MIS MATCHES </a>
-						</p>
-					</td>
-				</tr>
-			</table>
-		</nav>
-		<h2 style="text-align: center">MIS DESCARTES</h2>
-	</div>
-	<div style= "background-color: lightcoral">
-			<ul>
-				<li th:each="elementoLista: ${listaContactos}">
-					<p th:text="'Usuario: ' + ${elementoLista.username}"></p>
-					<p th:text="'Nombre: ' + ${elementoLista.nombre}"></p>
-					<p th:text="'Edad:  ' + ${elementoLista.edad}"></p>
-					<p th:text="'Genero:  ' + ${elementoLista.genero}"></p>
-					<p th:text="'Descripción: ' + ${elementoLista.descripcion}"></p>
-				</li>
+<body th:style="'background: url(/img/background.jpg) no-repeat center center fixed;'">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" style="margin-left: 2%" href="#"><h1>LucaTinder</h1></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="true" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse collapse justify-content-end">
+			<span class="navbar-text" th:text=${status}>  </span>
+		</div>
+
+		<!-- La parte de arriba solo para el login y el form -->
+
+		<div class="collapse navbar-collapse collapse justify-content-end"
+			id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+
+				<li class="nav-item"><a class="nav-link" th:href="@{/datos}">Perfil</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listadoContactos}">Contactos</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listadoDescartes}">Descartes</a>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listadoMatches}">Matches</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/logOut}">LogOut</a></li>
 			</ul>
+		</div>
+	</nav>
+
+	<div id="grilla">
+		<div class="col-md-5 text-center" style="margin: auto">
+			<div class="table-responsive-md">
+				<div class="container" style="align: center">
+
+					<div class="row">
+						<div class="col-sm">
+							<div align="center" th:each="usuariolista : ${listaInicial}"
+								class="card" style="heigth: 70rem; width: 35rem; margin: 2%">
+								<div class="container">
+									<div class="card-header" style="float: left; width: 45%">
+										<img class="card-img-left" width="120%"
+											th:src="@{/../../img/user.png}" alt="Card image cap">
+									</div>
+									<div class="card-body" style="float: right; heigth:60%;width: 40%">
+										<h4 class="card-title" th:text="${usuariolista.nombre}">Card
+											title</h4>
+										<p class="card-text" th:text="'Edad: ' + ${usuariolista.edad}"></p>
+										<p class="card-text"
+											th:text="'Genero: ' + ${usuariolista.genero}"></p>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-    </body>
+
+
+	<script th:src="@{static/js/bootstrap.min.js}"></script>
+</body>
 </html>
