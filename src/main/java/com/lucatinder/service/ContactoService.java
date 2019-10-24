@@ -72,6 +72,7 @@ public class ContactoService implements IContactoService {
 			
 			if(previoMatch!=null) {
 				log.info("El match ya había sido realizado");
+				
 			}else {
 				match.setUsuarioSolicitante(matchContacto.getUsuarioContactado());
 				match.setUsuarioReceptor(matchContacto.getUsuarioContactante());
@@ -79,20 +80,25 @@ public class ContactoService implements IContactoService {
 				
 				matchService.guardarMatch(match);
 				log.info("Match almacenado con éxito");
+				
 			}
 			contactoDao.delete(matchContacto);
 		}
 		else if(previoContacto!=null) {
 			log.info("Este Contacto ya ha sido realizado previamente");
+			
 		}
 		else {
 			if(previoMatch!=null) {
 				log.info("Existe un match previo, no se modifica nada");
+				
 			}else {
 			log.info("No hay coincidencias, almacenando Contacto");
 			contactoDao.save(c);
+			
 			}
 		}
+		
 	}
 
 }
