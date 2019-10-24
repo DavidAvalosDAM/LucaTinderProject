@@ -1,6 +1,7 @@
 package com.lucatinder.rest;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lucatinder.dao.IUsuarioDao;
 import com.lucatinder.model.Contactos;
 import com.lucatinder.model.Descartes;
 import com.lucatinder.model.Usuario;
@@ -18,12 +20,13 @@ import com.lucatinder.service.MatchesService;
 import com.lucatinder.service.UsuarioService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class ControladorRest {
 	
+	private Logger log=Logger.getLogger("Controlador Rest: -------");
 	private Usuario usuarioPadre;
 	@Autowired
-	private UsuarioService usu;
+	private UsuarioService usi;
 	
 	@Autowired
 	private ContactoService cs;
@@ -34,15 +37,56 @@ public class ControladorRest {
 	@Autowired
 	private MatchesService ms;
 	
+	@Autowired
+	private IUsuarioDao usuDao;
+	
+	
+	@PostMapping("/restLogin")//FUNCIONA
+	public Usuario urlLoginEnviado(@RequestBody Usuario u) {
+		try {
+			log.info("Recibiendo info de usuario para login");
+			log.info("NOMBRE: "+u.getUsername());
+			log.info(u.getPassword());
+
+			Usuario usuarioComprobador = usi.devolverUsuarioPorUsername(u.getUsername());
+			log.info("Usuario encontrado:");
+			log.info(usuarioComprobador.getUsername());
+			log.info(usuarioComprobador.getPassword());
+			
+		if (u.getPassword().equals(usuarioComprobador.getPassword())) {
+			log.info("Password coincidente");
+			log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"");
+			usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
+			
+			return usuarioPadre;
+
+		}else {
+			log.info("Password no coincidente");
+		
+			return u;
+		}
+		}catch(Exception e) {
+			log.info("El usuario no existe");
+			return u;
+		}
+	}
+	
 	/**
 	 * Este método recibe un usuario JSON y lo guarda en la BBDD.
 	 * @author Yolanda
 	 * @version 1.0
 	 * @date 22/10/2019
 	 */
-	@PostMapping("/restAlta")
-	public void altaUsuario(Usuario usuario){
-		usu.guardarUsuario(usuario);
+	@PostMapping("/restAlta")//FUNCIONA
+	public Usuario altaUsuario(@RequestBody Usuario u){
+		try {
+		
+			usi.guardarUsuario(u);
+			return usi.devolverUsuarioPorUsername(u.getUsername());
+		}catch(Exception e){
+			u.setIdUsuario(0);
+			return u;
+		}
 	
 	}
 	
@@ -52,9 +96,24 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@PostMapping("/restBaja")
-	public void bajaUsuario(Usuario usuario) {
-		usu.eliminarUsuario(usuario);
+	@PostMapping("/restBaja")//FUNCIONA
+	public Usuario bajaUsuario(@RequestBody Usuario u) {
+		
+			log.info(u.getIdUsuario()+"");
+			log.info(u.getUsername());
+			
+			if(usi.devolverUsuarioPorUsername(u.getUsername()).getUsername().equals(u.getUsername())){
+				log.info("Username coincidente");
+				usi.eliminarUsuario(usi.devolverUsuarioPorUsername(u.getUsername()));
+				log.info("User borrado");
+				u.setIdUsuario(1);
+				return u;
+			}else {
+				log.info("User no coincide, peticion desechada");
+				u.setIdUsuario(0);
+				return u;
+			}
+		
 	}
 	
 	/**
@@ -64,9 +123,19 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	@PostMapping("/restModificar")
-	public void modificarUsuario(Usuario usuario) {
-		usu.modificarUsuario(usuario);
+	public void modificarUsuario(@RequestBody Usuario u) {
+		
+		usi.modificarUsuario(u);
+		try {
+			
+			usi.modificarUsuario(u);
+			return usi.devolverUsuarioPorUsername(u.getUsername());
+		}catch(Exception e){
+			u.setIdUsuario(0);
+			return u;
+		}
 	}
+
 	
 	/**
 	 * Este método recibe un usuario JSON y devuelve el username de la BBDD.
@@ -76,7 +145,7 @@ public class ControladorRest {
 	 */
 	@GetMapping("/restDevuelveUsuarioUserName")
 	public Usuario devuelveUsuarioPorUsername(@RequestBody String userName) {
-		return usu.devolverUsuarioPorUsername(userName);
+		return usi.devolverUsuarioPorUsername(userName);
 		
 	}
 	
@@ -87,11 +156,11 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	
-	/*@GetMapping("/restListadoInicial")
-	public List<Usuario> devuelveListadoInicialSencillo(@RequestBody int idUsuario) {
-		return usu.devuelveListadoInicialSencillo(idUsuario);
+	@PostMapping("/restListadoInicial")//FUNCIONA
+	public List<Usuario> devuelveListadoInicialComplejo(@RequestBody Usuario u) {
+		return usi.devuelveListadoInicialComplejo(u.getIdUsuario());
 	}
-	
+
 	/**
 	 * Este método recibe un usuario JSON y devuelve el id de usuario de la BBDD.
 	 * @author Iván
@@ -100,7 +169,7 @@ public class ControladorRest {
 	 */
 	@GetMapping("/restDevuelveUsuarioId")
 	public Usuario devuelveUsuarioPorId(@RequestBody int id) {
-		return usu.devuelveUsuarioId(id);
+		return usi.devuelveUsuarioId(id);
 		
 	}
 	
@@ -166,6 +235,11 @@ public class ControladorRest {
 		d.setUsuarioDescartado(u);
 		ds.addDescarte(d);
 	
+	}
+	@GetMapping("/restTodos")
+		public List<Usuario> dameTodos(){
+			
+		return usuDao.findAll();
 	}
 		
 }
