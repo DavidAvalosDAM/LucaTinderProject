@@ -123,7 +123,7 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	@PostMapping("/restModificar")
-	public void modificarUsuario(@RequestBody Usuario u) {
+	public Usuario modificarUsuario(@RequestBody Usuario u) {
 		
 		usi.modificarUsuario(u);
 		try {
