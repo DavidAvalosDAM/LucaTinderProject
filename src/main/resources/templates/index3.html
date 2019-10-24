@@ -20,6 +20,8 @@
 			<span class="navbar-text"> Donde ligan los que no ligan </span>
 		</div>
 
+		<!-- La parte de arriba solo para el login y el form -->
+
 		<div class="collapse navbar-collapse collapse justify-content-end"
 			id="navbarNav">
 			<ul class="navbar-nav ml-auto">
@@ -32,18 +34,7 @@
 		</div>
 	</nav>
 
-	<!--<div class="container" style="width: 40rem; margin-top: 2%">
-		<div class="card-header" style="float: left; width: 40%">
-			<img class="card-img-left" width="100%"
-				th:src="@{/../../img/user.png}" alt="Card image cap">
-		</div>
-		<div class="card-body" style="float: right; width: 60%">
-			<h4 class="card-title">Card title</h4>
-			<p class="card-text">Some quick example text to build on the card
-				title and make up the bulk of the card's content.</p>
-			<a href="#" class="btn btn-primary">Go somewhere</a>
-		</div>-->
-
+	<!-- 			-----------------------------------------------			 -->
 
 		<div class="container">
 			<div class="row">
@@ -61,6 +52,8 @@
 							<p class="card-text" th:text="'Edad: ' + ${usuariolista.edad}"></p>
 							<p class="card-text"
 								th:text="'Genero: ' + ${usuariolista.genero}"></p>
+								
+								<!--     ------------NO USAR--------------     -->
 							<div>
 								<form th:action="@{/addContacto}" th:object="${usuarioVacio}"
 									method="post">
@@ -75,6 +68,7 @@
 										name="username" /> <input type="submit" value="No Like" />
 								</form>
 							</div>
+							<!--     -----------------------------------------     -->
 						</div>
 					</div>
 				</div>
