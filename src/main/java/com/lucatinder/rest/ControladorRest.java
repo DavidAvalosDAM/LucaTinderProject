@@ -41,7 +41,7 @@ public class ControladorRest {
 	private IUsuarioDao usuDao;
 	
 	/**
-	 * Este método recibe un usuario JSON, lo comprueba, junto con la contraseña y lo guarda en la BBDD.
+	 * Este método recibe un usuario JSON, comprueba las credenciales.
 	 * @author Jorge
 	 * @version 1.0
 	 * @date 24/10/2019
@@ -123,7 +123,7 @@ public class ControladorRest {
 	}
 	
 	/**
-	 * Este método recibe un usuario JSON y lo modifica de la BBDD.
+	 * Este método recibe un usuario JSON y lo modifica en la BBDD.
 	 * @author Iván
 	 * @version 1.0
 	 * @return 
@@ -142,7 +142,7 @@ public class ControladorRest {
 	}
 
 	/**
-	 * Este método recibe una lista de usuarios JSON y lo muestra de la BBDD.
+	 * Este método recibe un usuario por JSON y devuelve una lista adecuada a el.
 	 * @author Iván
 	 * @version 1.0
 	 * @date 23/10/2019
@@ -154,7 +154,7 @@ public class ControladorRest {
 	}
 
 	/**
-	 * Este método recibe un usuario JSON y devuelve la lista de Contactos de la BBDD.
+	 * Este método recibe un usuario JSON y devuelve la lista de Contactos.
 	 * @author Iván
 	 * @version 1.0
 	 * @date 23/10/2019
@@ -167,7 +167,7 @@ public class ControladorRest {
 	}
 	
 	/**
-	 * Este método recibe un usuario JSON y devuelve la lista de Descartes de la BBDD.
+	 * Este método recibe un usuario JSON y devuelve la lista de Descartes.
 	 * @author Iván
 	 * @version 1.0
 	 * @date 23/10/2019
@@ -179,7 +179,7 @@ public class ControladorRest {
 	}
 	
 	/**
-	 * Este método recibe un usuario JSON y devuelve la lista de Matches de la BBDD.
+	 * Este método recibe un usuario JSON y devuelve la lista de Matches.
 	 * @author Iván
 	 * @version 1.0
 	 * @date 23/10/2019
@@ -191,7 +191,7 @@ public class ControladorRest {
 	}
 	
 	/**
-	 * Este método recibe un usuario y recibe un Contacto para generar un Contactado.
+	 * Este método recibe un usuario y recibe un Contactado para generar un Contacto en la BBDD.
 	 * @author Iván
 	 * @version 1.0
 	 * @date 23/10/2019
@@ -208,6 +208,7 @@ public class ControladorRest {
 	}
 	
 	/**
+	 * Este método recibe un usuario y lo descarta añadiendolo en la BBDD en descartados.
 	 * @author Iván
 	 * @version 1.0
 	 * @date 23/10/2019
@@ -220,11 +221,6 @@ public class ControladorRest {
 		ds.addDescarte(d);
 		return usi.devolverUsuarioPorUsername(u.getUsername());
 	
-	}
-	@GetMapping("/restTodos")
-		public List<Usuario> dameTodos(){
-			
-		return usuDao.findAll();
 	}
 		
 }

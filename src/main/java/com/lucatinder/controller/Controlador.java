@@ -143,6 +143,7 @@ public class Controlador {
 	 * Método creado para mostrar los contactos a los que se les da like
 	 * 
 	 * @version 1.0
+	 * @date 23/10/2019
 	 * @param model
 	 * @autor David
 	 */
@@ -158,7 +159,7 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @param model
-	 * @autor David
+	 * @autor Jorge
 	 */
 	@GetMapping("/listadoDescartes")
 	public String urlDescartes(Model model) {
@@ -166,6 +167,15 @@ public class Controlador {
 		model.addAttribute("listaContactos",ids.devuelveListaDescartes(usuarioPadre.getIdUsuario()));
 		return "listadoDescartes";
 	}
+	
+	/**
+	 * Método creado para mostrar los contactos de los que han coincidido el like de un usuario contigo y hacia el llamado Match.
+	 * 
+	 * @version 1.0
+	 * @date 23/10/2019
+	 * @param model
+	 * @autor Jorge
+	 */
 	@GetMapping("/listadoMatches")
 	public String urlMatches(Model model) {
 		model.addAttribute("usuario", usuarioPadre);
@@ -173,6 +183,14 @@ public class Controlador {
 		return "listadoMatches";
 	}
 	
+	/**
+	 * Método creado para contactar con un usuario mediante un like sin retorno.
+	 * 
+	 * @version 1.0
+	 * @date 23/10/2019
+	 * @param model
+	 * @autor Jorge
+	 */
 	@PostMapping("/addContacto")
 	public String urlLikeContactos (Usuario u, Model model) {
 		
@@ -195,6 +213,14 @@ public class Controlador {
 		model.addAttribute("status","Has agregado en tus contactos a "+u.getUsername());
 		return "index";
 	}
+	/**
+	 * Método creado para descartar con un usuario mediante un dilike.
+	 * 
+	 * @version 1.0
+	 * @date 23/10/2019
+	 * @param model
+	 * @autor Jorge
+	 */
 	@PostMapping("/addDescarte")
 	public String urlDescartaContactos (Usuario u, Model model) {
 		
