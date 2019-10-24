@@ -57,7 +57,7 @@ public class ControladorRest {
 			log.info("Password coincidente");
 			log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"");
 			usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
-			
+			log.info(usuarioPadre.getUsername());
 			return usuarioPadre;
 
 		}else {
@@ -69,6 +69,7 @@ public class ControladorRest {
 			log.info("El usuario no existe");
 			return u;
 		}
+		
 	}
 	
 	/**
@@ -120,14 +121,13 @@ public class ControladorRest {
 	 * Este método recibe un usuario JSON y lo modifica de la BBDD.
 	 * @author Iván
 	 * @version 1.0
+	 * @return 
 	 * @date 23/10/2019
 	 */
-	@PostMapping("/restModificar")
-	public void modificarUsuario(@RequestBody Usuario u) {
-		
-		usi.modificarUsuario(u);
-		try {
+	@PostMapping("/restModificar")//FUNCIONA
+	public Usuario modificarUsuario(@RequestBody Usuario u) {
 			
+		try {
 			usi.modificarUsuario(u);
 			return usi.devolverUsuarioPorUsername(u.getUsername());
 		}catch(Exception e){
@@ -136,19 +136,6 @@ public class ControladorRest {
 		}
 	}
 
-	
-	/**
-	 * Este método recibe un usuario JSON y devuelve el username de la BBDD.
-	 * @author Iván
-	 * @version 1.0
-	 * @date 23/10/2019
-	 */
-	@GetMapping("/restDevuelveUsuarioUserName")
-	public Usuario devuelveUsuarioPorUsername(@RequestBody String userName) {
-		return usi.devolverUsuarioPorUsername(userName);
-		
-	}
-	
 	/**
 	 * Este método recibe una lista de usuarios JSON y lo muestra de la BBDD.
 	 * @author Iván
@@ -162,26 +149,15 @@ public class ControladorRest {
 	}
 
 	/**
-	 * Este método recibe un usuario JSON y devuelve el id de usuario de la BBDD.
-	 * @author Iván
-	 * @version 1.0
-	 * @date 23/10/2019
-	 */
-	@GetMapping("/restDevuelveUsuarioId")
-	public Usuario devuelveUsuarioPorId(@RequestBody int id) {
-		return usi.devuelveUsuarioId(id);
-		
-	}
-	
-	/**
 	 * Este método recibe un usuario JSON y devuelve la lista de Contactos de la BBDD.
 	 * @author Iván
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@GetMapping("/restDevuelveListadoContactos")
-	public List<Usuario> devuelveListadoContactos(@RequestBody int idUsuarioContactante) {
-		return cs.devuelveListaContactos(idUsuarioContactante);
+	@PostMapping("/restDevuelveListadoContactos")//FUNCIONA.
+	public List<Usuario> devuelveListadoContactos(@RequestBody Usuario u) {
+		
+		return cs.devuelveListaContactos(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario());
 		
 	}
 	
@@ -191,9 +167,9 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@GetMapping("/restDevuelveListaDescartes")
-	public List<Usuario> devuelveListaDescartes(@RequestBody int idUsuarioDescartante) {
-		return ds.devuelveListaDescartes(idUsuarioDescartante);
+	@PostMapping("/restDevuelveListaDescartes")//FUNCIONA
+	public List<Usuario> devuelveListaDescartes(@RequestBody Usuario u) {
+		return ds.devuelveListaDescartes(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario());
 		
 	}
 	
@@ -203,9 +179,9 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@GetMapping("/restDevuelveListaMatches")
-	public List<Usuario> devuelveListaMatches(@RequestBody int idUsuarioSolicitante) {
-		return ms.devuelveMatches(idUsuarioSolicitante);
+	@PostMapping("/restDevuelveListaMatches")//FUNCIONA
+	public List<Usuario> devuelveListaMatches(@RequestBody Usuario u) {
+		return ms.devuelveMatches(usi.devolverUsuarioPorUsername(u.getUsername()).getIdUsuario());
 		
 	}
 	
@@ -214,13 +190,15 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@PostMapping("/restContactar")
-	public void contactar(@RequestBody Usuario u){
+	@PostMapping("/restContactar")//FUNCIONA
+	public Usuario contactar(@RequestBody Usuario u){
 		Contactos c = new Contactos();
+		log.info("Usuario padre :"+usuarioPadre.getIdUsuario());
+		log.info("Usuario padre :"+usuarioPadre.getUsername());
 		c.setUsuarioContactante(usuarioPadre);
-		c.setUsuarioContactado(u);
+		c.setUsuarioContactado(usi.devolverUsuarioPorUsername(u.getUsername()));
 		cs.contactar(c);
-	
+		return usi.devolverUsuarioPorUsername(u.getUsername());
 	}
 	
 	/**
@@ -228,12 +206,13 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@PostMapping("/restDescartar")
-	public void descartar(@RequestBody Usuario u){
+	@PostMapping("/restDescartar")//FUNCIONA
+	public Usuario descartar(@RequestBody Usuario u){
 		Descartes d = new Descartes();
 		d.setUsuarioDescartante(usuarioPadre);
-		d.setUsuarioDescartado(u);
+		d.setUsuarioDescartado(usi.devolverUsuarioPorUsername(u.getUsername()));
 		ds.addDescarte(d);
+		return usi.devolverUsuarioPorUsername(u.getUsername());
 	
 	}
 	@GetMapping("/restTodos")
