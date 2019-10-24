@@ -239,8 +239,4 @@ public class Controlador {
 		return "index";
 	}
 
-	@GetMapping("/descartes")
-	public String urlListadoDescartes(Model model) {
-		return "listadoDescartes";
-	}
 }
