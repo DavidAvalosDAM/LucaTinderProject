@@ -43,32 +43,34 @@
           	</div> 
 			<h2>Datos Usuario</h2>
 		        
-			<form th:action="@{/datos}" th:object="${usuario}" method="post">
-			    
-			<div>
-				Username: <input type="text" name="username" th:value= "${usuario.username}" required ></p>
-			</div>
-			<div>
-				Password: <input type="password" name= "password" th:value= "${usuario.password}" minlength=6 maxlength=12 required ></p>
-			</div>
-			<div>
-				<p>Nombre: <input type="text" name= "nombre" th:value= "${usuario.nombre}" required></p>
-			</div>
-			<div>
-				Género(M/F): <input type="text" name="genero" th:value = "${usuario.genero}" pattern="M|F" required></p>
-			</div>
-			<div>
-				Edad: <input type="number" th:name ="edad" th:value = "${usuario.edad}" min=18 max=90 required ></p>
-			</div>
-				Descripcion: <input type="text" th:name= "descripcion" th:value= "${usuario.descripcion}" style="HEIGHT:60px;WIDTH:120px" ></p>
-			<div>
-			
-			<button type=submit>Modificar Usuario</button>
-			</div>
+			<form th:action="@{/modificarDatos}" th:object="${usuarioVacio}" method="post">
+				
+				    <input type="hidden" th:value="${usuario.idUsuario}" name="idUsuario" />
+				<div>
+					Username: <input type="text" th:value= "${usuario.username}" name="username" required ></p>
+				</div>
+				<div>
+					Password: <input type="password"  th:value= "${usuario.password}" name="password" minlength=6 maxlength=12 required ></p>
+				</div>
+				<div>
+					<p>Nombre: <input type="text" th:value= "${usuario.nombre}" name="nombre" required></p>
+				</div>
+				<div>
+					Género(M/F): <input type="text" th:value = "${usuario.genero}" name="genero" pattern="M|F" required></p>
+				</div>
+				<div>
+					Edad: <input type="number" th:value = "${usuario.edad}" name="edad" min=18 max=90 required ></p>
+				</div>
+					Descripcion: <input type="text" th:value= "${usuario.descripcion}" name="descripcion" style="HEIGHT:60px;WIDTH:120px" ></p>
+				<div>
+				
+				<button type="submit">Modificar Usuario</button>
+				</div>
 		    </form>
+		    
 		    <div>
-		    <form th:action="@{/eliminar}" th:object="${usuario}" method="post">
-		    	<button type=submit>Eliminar Usuario</button>
+		    <form th:action="@{/eliminar}" method="get">
+		    	<button type="submit">Eliminar Usuario</button>
 		    </form>
 			</div>
 

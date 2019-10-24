@@ -82,8 +82,9 @@ public class Controlador {
 			log.info("Password coincidente");
 			log.info((usi.devolverUsuarioPorUsername(u.getUsername())).getIdUsuario()+"Lo que queremos comprobar ahora debe ser 25");
 			usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
-			model.addAttribute("usuario", usuarioPadre);
 			
+			model.addAttribute("usuario", usuarioPadre);
+			model.addAttribute("status","Nos alegra volver a verte "+usuarioPadre.getNombre()+", estas personas esperan conocerte");
 			model.addAttribute("usuarioVacio", new Usuario());
 			model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
 			return "index";
@@ -120,7 +121,7 @@ public class Controlador {
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("usuarioVacio", new Usuario());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
-		
+		model.addAttribute("status",usuarioPadre.getNombre()+", estas personas esperan conocerte");
 		return "index";
 	}
 
@@ -132,6 +133,7 @@ public class Controlador {
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("usuarioVacio", new Usuario());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
+		model.addAttribute("status","Bienvenido "+usuarioPadre.getNombre()+", estas personas esperan conocerte");
 		return "index";
 	}
 
@@ -183,6 +185,7 @@ public class Controlador {
 		model.addAttribute("descarte",new Descartes());
 		model.addAttribute("usuarioVacio", new Usuario());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
+		model.addAttribute("status","Has agregado en tus contactos a "+u.getUsername());
 		return "index";
 	}
 	@PostMapping("/addDescarte")
@@ -197,6 +200,7 @@ public class Controlador {
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("usuarioVacio", new Usuario());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
+		model.addAttribute("status","Has descartado a "+u.getUsername());
 		return "index";
 	}
 
@@ -217,7 +221,8 @@ public class Controlador {
 	public String urlEliminarUsuario(Model model) {
 
 		usi.eliminarUsuario(usuarioPadre);
-
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("status", "Usuario eliminado con éxito");
 		return "login";
 
 	}
@@ -230,12 +235,15 @@ public class Controlador {
 	 */
 	@PostMapping("/modificarDatos")
 	public String urlModificarUsuario(Usuario u, Model model) {
+		log.info("Id: "+u.getIdUsuario());
+		log.info("Username: "+u.getUsername());
 		usi.guardarUsuario(u);
 		
 		usuarioPadre=usi.devolverUsuarioPorUsername(u.getUsername());
 		model.addAttribute("usuario", usuarioPadre);
 		model.addAttribute("usuarioVacio", new Usuario());
 		model.addAttribute("listaInicial", usi.devuelveListadoInicialComplejo(usuarioPadre.getIdUsuario()));
+		model.addAttribute("status","Has modificado correctamente tus datos,"+u.getUsername());
 		return "index";
 	}
 

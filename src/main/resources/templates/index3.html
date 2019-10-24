@@ -3,12 +3,13 @@
 	<head>
 		<title>Index</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		
+		<link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{static/css/bootstrap.css}"/>
 	</head>
 	<body>
           <header class="header"> 
               <h1 style= "text-align: center">L U C A T I N D E R</h1>
-              <nav>
+              <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+              		<div class="container">
                   <table>
                     <tr> 
                         <td>
@@ -41,6 +42,7 @@
                         </td>
                     </tr>
                   </table>
+                  </div>
               </nav>   
           </header> 
           <div style= "text-align: center" ><h4 style= "color:red" th:text="${status}"></h4></div>
@@ -69,5 +71,6 @@
         
     		</ul>
     	</div>
+    	<script th:src="@{static/js/bootstrap.min.js}"></script>
 	</body> 
 </html>
