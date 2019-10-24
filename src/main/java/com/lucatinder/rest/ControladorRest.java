@@ -44,7 +44,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario JSON, comprueba las credenciales.
 	 * @author Jorge
 	 * @version 1.0
-	 * @date 24/10/2019
 	 */
 	@PostMapping("/restLogin")//FUNCIONA
 	public Usuario urlLoginEnviado(@RequestBody Usuario u) {
@@ -81,7 +80,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario JSON y lo guarda en la BBDD.
 	 * @author Yolanda
 	 * @version 1.0
-	 * @date 22/10/2019
 	 */
 	@PostMapping("/restAlta")//FUNCIONA
 	public Usuario altaUsuario(@RequestBody Usuario u){
@@ -100,7 +98,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario JSON y lo elimina de la BBDD.
 	 * @author Iván
 	 * @version 1.0
-	 * @date 23/10/2019
 	 */
 	@PostMapping("/restBaja")//FUNCIONA
 	public Usuario bajaUsuario(@RequestBody Usuario u) {
@@ -127,7 +124,6 @@ public class ControladorRest {
 	 * @author Iván
 	 * @version 1.0
 	 * @return 
-	 * @date 23/10/2019
 	 */
 	@PostMapping("/restModificar")//FUNCIONA
 	public Usuario modificarUsuario(@RequestBody Usuario u) {
@@ -145,7 +141,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario por JSON y devuelve una lista adecuada a el.
 	 * @author Iván
 	 * @version 1.0
-	 * @date 23/10/2019
 	 */
 	
 	@PostMapping("/restListadoInicial")//FUNCIONA
@@ -157,7 +152,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario JSON y devuelve la lista de Contactos.
 	 * @author Iván
 	 * @version 1.0
-	 * @date 23/10/2019
 	 */
 	@PostMapping("/restDevuelveListadoContactos")//FUNCIONA.
 	public List<Usuario> devuelveListadoContactos(@RequestBody Usuario u) {
@@ -170,7 +164,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario JSON y devuelve la lista de Descartes.
 	 * @author Iván
 	 * @version 1.0
-	 * @date 23/10/2019
 	 */
 	@PostMapping("/restDevuelveListaDescartes")//FUNCIONA
 	public List<Usuario> devuelveListaDescartes(@RequestBody Usuario u) {
@@ -182,7 +175,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario JSON y devuelve la lista de Matches.
 	 * @author Iván
 	 * @version 1.0
-	 * @date 23/10/2019
 	 */
 	@PostMapping("/restDevuelveListaMatches")//FUNCIONA
 	public List<Usuario> devuelveListaMatches(@RequestBody Usuario u) {
@@ -194,7 +186,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario y recibe un Contactado para generar un Contacto en la BBDD.
 	 * @author Iván
 	 * @version 1.0
-	 * @date 23/10/2019
 	 */
 	@PostMapping("/restContactar")//FUNCIONA
 	public Usuario contactar(@RequestBody Usuario u){
@@ -211,7 +202,6 @@ public class ControladorRest {
 	 * Este método recibe un usuario y lo descarta añadiendolo en la BBDD en descartados.
 	 * @author Iván
 	 * @version 1.0
-	 * @date 23/10/2019
 	 */
 	@PostMapping("/restDescartar")//FUNCIONA
 	public Usuario descartar(@RequestBody Usuario u){

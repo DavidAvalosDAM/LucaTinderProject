@@ -11,9 +11,9 @@ public interface UsuarioService {
 	/**
 	 * Métodos para eliminar, guardar y listado de usuario.
 	 * @version 1.0
-	 * @date 18/10/2019 
-	 * @autor Yolanda
+	 * @author Yolanda
 	 **/
+	
 	public void eliminarUsuario(Usuario u);
 
 	public List<Usuario> devuelveListadoInicialSencillo(int idUsuario);

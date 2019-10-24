@@ -14,8 +14,7 @@ import com.lucatinder.model.Usuario;
  * Creamos la interfaz Descartes.
  * Método para que nos devuelva un listado de descartes.
  * @version 1.0
- * @date 21/10/2019
- * @autor Yolanda
+ * @author Yolanda
  **/
 
 public interface IDescartesService {

@@ -13,8 +13,7 @@ import com.lucatinder.model.Usuario;
  * Implementamos la interfaz Descartes.
  * LLamamos al  método creado en la Interfaz para que nos devuelva un listado de descartes.
  * @version 1.0
- * @date 21/10/2019
- * @autor Yolanda
+ * @author Yolanda
  **/
 @Service
 public class DescartesService implements IDescartesService {

@@ -8,7 +8,6 @@ import com.lucatinder.model.Descartes;
    * Esta interface hereda de JpaRepository, que nos ayuda con el trato con la bbdd
    * @author Yolanda
    * @version 1.0
-   * @date 21/10/2019 
    */
 
 public interface IDescartesDao extends JpaRepository<Descartes, Integer>  {
@@ -17,7 +16,6 @@ public interface IDescartesDao extends JpaRepository<Descartes, Integer>  {
 	 * Esta query Personalizada nos devuelve los usuarios descartados
 	 * @author Yolanda
 	 * @version 1.0
-	 * @date 21/10/2019
 	 */
 	@Query(
 			  value = "SELECT * FROM descartes WHERE id_usuario_descartante = ?1 ", 

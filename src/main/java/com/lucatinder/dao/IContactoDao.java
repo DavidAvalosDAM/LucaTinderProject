@@ -26,8 +26,8 @@ public interface IContactoDao extends JpaRepository<Contactos, Integer> {
 	 * contactado por el usuario contactado previamente
 	 * 
 	 * @author Jorge
-	 * @param idUsuario,idUsuarioContactado
-	 * @return <Optional>Contactos
+	 * @param idUsuarioContactante es la id usuario
+	 * @param idUsuarioContactado es la id usuario de contacto
 	 */
 	@Query(
 			  value = "SELECT * FROM contactos WHERE id_usuario_contactante = ?2 AND id_usuario_contactado = ?1", 
@@ -38,8 +38,8 @@ public interface IContactoDao extends JpaRepository<Contactos, Integer> {
 	 * previamente con el usuario contactado
 	 * 
 	 * @author Jorge
-	 * @param idUsuario,idUsuarioContactado
-	 * @return <Optional>Contactos
+	 * @param idUsuarioContactante es la id usuario
+	 * @param idUsuarioContactado es la id usuario de contacto
 	 */
 	@Query(
 			  value = "SELECT * FROM contactos WHERE id_usuario_contactante = ?1 AND id_usuario_contactado = ?2", 

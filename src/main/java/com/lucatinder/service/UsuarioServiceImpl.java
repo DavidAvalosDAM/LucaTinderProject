@@ -36,8 +36,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	/**
 	 * Métodos para eliminar, guardarUsuarioAutomático y listado implementados.
 	 * @version 1.0
-	 * @date 18/10/2019 
-	 * @autor Yolanda
+	 * @author Yolanda
 	 **/
 	public void eliminarUsuario(Usuario u) {
 		usuDao.delete(u);

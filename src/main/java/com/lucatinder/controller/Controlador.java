@@ -48,7 +48,7 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @date 18/10/2019
-	 * @autor Ivan
+	 * @author Ivan
 	 *
 	 */
 
@@ -64,7 +64,7 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @date 18/10/2019
-	 * @autor Ivan & Jorge
+	 * @author Ivan & Jorge
 	 */
 	@PostMapping("/")
 	public String urlLoginEnviado(Usuario u, Model model) {
@@ -109,7 +109,7 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @date 18/10/2019
-	 * @autor Iván
+	 * @author Iván
 	 */
 	@GetMapping("/alta")
 	public String urlAlta(Model model) {
@@ -145,7 +145,7 @@ public class Controlador {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 * @param model
-	 * @autor David
+	 * @author David
 	 */
 	@GetMapping("/listadoContactos")
 	public String urlContactos(Model model) {
@@ -159,7 +159,7 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @param model
-	 * @autor Jorge
+	 * @author Jorge
 	 */
 	@GetMapping("/listadoDescartes")
 	public String urlDescartes(Model model) {
@@ -174,7 +174,7 @@ public class Controlador {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 * @param model
-	 * @autor Jorge
+	 * @author Jorge
 	 */
 	@GetMapping("/listadoMatches")
 	public String urlMatches(Model model) {
@@ -189,7 +189,7 @@ public class Controlador {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 * @param model
-	 * @autor Jorge
+	 * @author Jorge
 	 */
 	@PostMapping("/addContacto")
 	public String urlLikeContactos (Usuario u, Model model) {
@@ -219,7 +219,7 @@ public class Controlador {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 * @param model
-	 * @autor Jorge
+	 * @author Jorge
 	 */
 	@PostMapping("/addDescarte")
 	public String urlDescartaContactos (Usuario u, Model model) {
@@ -242,7 +242,7 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @date 20/10/2019
-	 * @autor Yolanda
+	 * @author Yolanda
 	 */
 	@GetMapping("/datos")
 	public String urlMisDatos(Model model) {
@@ -264,7 +264,7 @@ public class Controlador {
 	 * 
 	 * @version 1.0
 	 * @date 21/10/2019
-	 * @autor Yolanda
+	 * @author Yolanda
 	 */
 	@PostMapping("/modificarDatos")
 	public String urlModificarUsuario(Usuario u, Model model) {

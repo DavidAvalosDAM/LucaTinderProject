@@ -20,7 +20,7 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 	 * Esta query Personalizada nos devuelve un usuario por su userName
 	 * 
 	 * @author Jorge
-	 * @param userName
+	 * @param userName es el nombre del usuario
 	 * @return Usuario único por su username
 	 */
 	@Query(value = "SELECT * FROM usuario WHERE username = ?1", nativeQuery = true)
@@ -31,7 +31,7 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 	 * id del usuario que se requiere por parámetro
 	 * 
 	 * @author Jorge
-	 * @param idUsuario
+	 * @param idUsuario es la id de usuario
 	 * @return Lista de usuarios con un algoritmo sencillo
 	 */
 	@Query(value = "SELECT * FROM usuario WHERE id_usuario <> ?1 LIMIT 20", nativeQuery = true)
@@ -42,9 +42,11 @@ public interface IUsuarioDao extends JpaRepository<Usuario, Integer> {
 	 * id del usuario que se requiere por parámetro
 	 * 
 	 * @author Jorge
-	 * @param idUsuario
+	 * @param idUsuario es la id de usuario
 	 * @return Lista de usuarios con un algoritmo sencillo
 	 */
+	
+	
 	@Query(value = "SELECT P.* FROM usuario P WHERE P.id_usuario != ?1 AND P.genero != ?2 AND P.edad > ?3 AND P.edad < ?4"
 			+ " AND P.id_usuario NOT IN ("
 			+ " SELECT C.id_usuario_contactado "

@@ -26,7 +26,7 @@ public class ContactoService implements IContactoService {
 	/**
 	 * Este método devuelve una lista de contactos en base al id de un Usuario dado
 	 * @author Jorge
-	 * @param idUsuarioContactante
+	 * @param idUsuarioContactante id de usuario contactante
 	 */
 	@Override
 	public List<Usuario> devuelveListaContactos(int idUsuarioContactante) {
@@ -46,18 +46,17 @@ public class ContactoService implements IContactoService {
 	 * pase los parámetros del método detectaMatch();
 	 * 
 	 * @author Jorge
-	 * @param Contacto
 	 */
 	@Override
 	public void contactar(Contactos c) {
 		detectaMatch(c);
 		
 	}
+	
 	/**Método para concretar la existencia de un Contacto previo,
 	 * y si es así eliminar dicho Contacto y convertirlo en un Match
 	 * 
 	 * @author Jorge
-	 * @param Contacto
 	 */
 	@Override
 	public void detectaMatch(Contactos c) {
