@@ -6,17 +6,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lucatinder.model.Contactos;
+import com.lucatinder.model.Descartes;
 import com.lucatinder.model.Usuario;
+import com.lucatinder.service.ContactoService;
+import com.lucatinder.service.DescartesService;
+import com.lucatinder.service.MatchesService;
 import com.lucatinder.service.UsuarioService;
 
 @RestController
 @CrossOrigin
 public class ControladorRest {
 	
+	private Usuario usuarioPadre;
 	@Autowired
 	private UsuarioService usu;
+	
+	@Autowired
+	private ContactoService cs;
+	
+	@Autowired
+	private DescartesService ds;
+	
+	@Autowired
+	private MatchesService ms;
 	
 	/**
 	 * Este método recibe un usuario JSON y lo guarda en la BBDD.
@@ -58,8 +74,8 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@PostMapping("/restDevuelveUsuarioUserName")
-	public Usuario devuelveUsuarioPorUsername(String userName) {
+	@GetMapping("/restDevuelveUsuarioUserName")
+	public Usuario devuelveUsuarioPorUsername(@RequestBody String userName) {
 		return usu.devolverUsuarioPorUsername(userName);
 		
 	}
@@ -71,8 +87,8 @@ public class ControladorRest {
 	 * @date 23/10/2019
 	 */
 	
-	@PostMapping("/restListadoInicial")
-	public List<Usuario> devuelveListadoInicialSencillo(int idUsuario) {
+	/*@GetMapping("/restListadoInicial")
+	public List<Usuario> devuelveListadoInicialSencillo(@RequestBody int idUsuario) {
 		return usu.devuelveListadoInicialSencillo(idUsuario);
 	}
 	
@@ -82,10 +98,74 @@ public class ControladorRest {
 	 * @version 1.0
 	 * @date 23/10/2019
 	 */
-	@GetMapping("/restDevuelveUsuarioUserName")
-	public Usuario devuelveUsuarioPorId(int id) {
+	@GetMapping("/restDevuelveUsuarioId")
+	public Usuario devuelveUsuarioPorId(@RequestBody int id) {
 		return usu.devuelveUsuarioId(id);
 		
+	}
+	
+	/**
+	 * Este método recibe un usuario JSON y devuelve la lista de Contactos de la BBDD.
+	 * @author Iván
+	 * @version 1.0
+	 * @date 23/10/2019
+	 */
+	@GetMapping("/restDevuelveListadoContactos")
+	public List<Usuario> devuelveListadoContactos(@RequestBody int idUsuarioContactante) {
+		return cs.devuelveListaContactos(idUsuarioContactante);
+		
+	}
+	
+	/**
+	 * Este método recibe un usuario JSON y devuelve la lista de Descartes de la BBDD.
+	 * @author Iván
+	 * @version 1.0
+	 * @date 23/10/2019
+	 */
+	@GetMapping("/restDevuelveListaDescartes")
+	public List<Usuario> devuelveListaDescartes(@RequestBody int idUsuarioDescartante) {
+		return ds.devuelveListaDescartes(idUsuarioDescartante);
+		
+	}
+	
+	/**
+	 * Este método recibe un usuario JSON y devuelve la lista de Matches de la BBDD.
+	 * @author Iván
+	 * @version 1.0
+	 * @date 23/10/2019
+	 */
+	@GetMapping("/restDevuelveListaMatches")
+	public List<Usuario> devuelveListaMatches(@RequestBody int idUsuarioSolicitante) {
+		return ms.devuelveMatches(idUsuarioSolicitante);
+		
+	}
+	
+	/**
+	 * @author Iván
+	 * @version 1.0
+	 * @date 23/10/2019
+	 */
+	@PostMapping("/restContactar")
+	public void contactar(@RequestBody Usuario u){
+		Contactos c = new Contactos();
+		c.setUsuarioContactante(usuarioPadre);
+		c.setUsuarioContactado(u);
+		cs.contactar(c);
+	
+	}
+	
+	/**
+	 * @author Iván
+	 * @version 1.0
+	 * @date 23/10/2019
+	 */
+	@PostMapping("/restDescartar")
+	public void descartar(@RequestBody Usuario u){
+		Descartes d = new Descartes();
+		d.setUsuarioDescartante(usuarioPadre);
+		d.setUsuarioDescartado(u);
+		ds.addDescarte(d);
+	
 	}
 		
 }
