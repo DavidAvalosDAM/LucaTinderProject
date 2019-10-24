@@ -221,7 +221,8 @@ public class Controlador {
 	public String urlEliminarUsuario(Model model) {
 
 		usi.eliminarUsuario(usuarioPadre);
-
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("status", "Usuario eliminado con éxito");
 		return "login";
 
 	}
